@@ -1,7 +1,8 @@
 import { site } from "@/lib/site";
 
+import ExperienceSection from "./ExperienceSection";
 import FeaturedLaunches from "./FeaturedLaunches";
-import { IconArrow, IconInstagram, IconLinkedIn } from "./icons";
+import { IconArrow, IconInstagram, IconLinkedIn, IconX } from "./icons";
 import styles from "./LandingPage.module.css";
 
 function BookLink({ href, className, children }) {
@@ -13,34 +14,15 @@ function BookLink({ href, className, children }) {
   );
 }
 
-function ExperienceStatement() {
-  const { statement, highlights } = site.experience;
-  const parts = statement.split(
-    /(tech startups|nonprofits|ecommerce|film)/g,
-  );
-
-  return (
-    <p className={styles.experienceStatement}>
-      {parts.map((part, index) => {
-        const highlight = highlights.find((item) => item.label === part);
-        if (!highlight) return <span key={`${part}-${index}`}>{part}</span>;
-        return (
-          <span key={`${part}-${index}`} className={styles.highlight}>
-            {highlight.icon} {highlight.label}
-          </span>
-        );
-      })}
-    </p>
-  );
-}
-
 export default function LandingPage() {
   return (
     <main id="main" className={styles.main}>
       <section className={styles.hero} aria-labelledby="hero-heading">
         <div className={styles.heroCopy}>
           <h1 id="hero-heading" className={styles.headline}>
-            {site.hero.headline}
+            {site.hero.headlineTop}
+            <br />
+            {site.hero.headlineBottom}
           </h1>
           <p className={styles.subhead}>{site.hero.subhead}</p>
         </div>
@@ -51,26 +33,7 @@ export default function LandingPage() {
 
       <FeaturedLaunches />
 
-      <section
-        id="experience"
-        className={styles.experience}
-        aria-labelledby="experience-heading"
-      >
-        <h2 id="experience-heading" className={styles.srOnly}>
-          Experience
-        </h2>
-        <ExperienceStatement />
-        <article className={styles.experienceCard}>
-          <p className={styles.experienceEyebrow}>
-            {site.experience.cardEyebrow}
-          </p>
-          <p className={styles.experienceBody}>
-            We understand how positioning matters when it comes to{" "}
-            <em>speed</em> and <em>comprehension</em> for a variety of
-            stakeholders from investors to customers.
-          </p>
-        </article>
-      </section>
+      <ExperienceSection />
 
       <section className={styles.cardGrid} aria-label="Contact, pricing, and socials">
         <article id="contact" className={`${styles.infoCard} ${styles.contactCard}`}>
@@ -115,6 +78,15 @@ export default function LandingPage() {
               aria-label="Wisper Studios on Instagram"
             >
               <IconInstagram className={styles.socialTileIcon} />
+            </a>
+            <a
+              href={site.links.x}
+              className={styles.socialTile}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Wisper Studios on X"
+            >
+              <IconX className={`${styles.socialTileIcon} ${styles.socialTileIconX}`} />
             </a>
           </div>
         </article>

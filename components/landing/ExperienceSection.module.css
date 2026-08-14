@@ -1,0 +1,160 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: min(671px, 100%);
+  margin: 0 auto;
+  padding: 187px 0 0;
+  scroll-margin-top: 88px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.statement {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 5px;
+  align-items: center;
+  width: 100%;
+  max-width: 660px;
+  margin: 0;
+  color: var(--color-pure-black);
+  font-size: 36px;
+  font-weight: var(--font-weight-sans-regular);
+  letter-spacing: -1.44px;
+  line-height: 39.6px;
+}
+
+.fullLine {
+  flex: 1 0 100%;
+}
+
+.token {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.token:hover,
+.token:focus-visible,
+.tokenActive {
+  color: var(--token-color);
+}
+
+.token:focus-visible {
+  outline: 2px solid var(--token-color);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.tokenIcon {
+  width: auto;
+  height: 0.85em;
+  flex-shrink: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: var(--radius-sm);
+  background-color: #ececec;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--color-pure-black);
+  font-family: var(--font-family-mono);
+  font-size: 12px;
+  font-weight: var(--font-weight-mono-regular);
+  letter-spacing: -0.48px;
+  line-height: 13.2px;
+}
+
+.body {
+  margin: 0;
+  color: var(--color-pure-black);
+  font-size: 16px;
+  font-weight: var(--font-weight-sans-regular);
+  letter-spacing: -0.64px;
+  line-height: 17.6px;
+}
+
+.progress {
+  height: 3px;
+  overflow: hidden;
+  border-radius: 100px;
+  background-color: #a9a8a8;
+}
+
+.progressFill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background-color: var(--accent);
+  animation: experienceProgress var(--rotate-ms, 6s) linear forwards;
+}
+
+.progressPaused {
+  animation-play-state: paused;
+}
+
+@keyframes experienceProgress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: 48px 0;
+  }
+
+  .statement {
+    font-size: 28px;
+    letter-spacing: -1.12px;
+    line-height: 32px;
+  }
+
+  .token {
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressFill {
+    transform: scaleX(1);
+    animation: none;
+  }
+}

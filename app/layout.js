@@ -18,6 +18,7 @@ const hanken = Hanken_Grotesk({
 const dmMono = DM_Mono({
   subsets: ["latin"],
   weight: ["300", "400"],
+  style: ["normal", "italic"],
   variable: "--font-mono",
   display: "swap",
 });

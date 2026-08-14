@@ -5,7 +5,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { site } from "@/lib/site";
 
-import { IconClose, IconLock, IconPlay } from "./icons";
+import { IconLock } from "./icons";
 import styles from "./LandingPage.module.css";
 
 function VideoOverlay({ item, onClose }) {
@@ -39,29 +39,38 @@ function VideoOverlay({ item, onClose }) {
         aria-labelledby={titleId}
         onClick={(event) => event.stopPropagation()}
       >
-        <div className={styles.overlayBar}>
-          <h3 id={titleId} className={styles.overlayTitle}>
-            {item.title}
-          </h3>
-          <button
-            ref={closeRef}
-            type="button"
-            className={styles.overlayClose}
-            onClick={onClose}
-            aria-label="Close video"
-          >
-            <IconClose className={styles.overlayCloseIcon} />
-          </button>
-        </div>
-        <div className={styles.overlayFrame}>
-          <iframe
-            key={item.embedUrl}
-            src={item.embedUrl}
-            title={item.title}
-            allow="encrypted-media; fullscreen; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-          />
+        <button
+          ref={closeRef}
+          type="button"
+          className={styles.overlayClose}
+          onClick={onClose}
+        >
+          Close
+        </button>
+        <div className={styles.overlayBody}>
+          <div className={styles.overlayFrame}>
+            <iframe
+              key={item.embedUrl}
+              src={item.embedUrl}
+              title={item.title}
+              allow="encrypted-media; fullscreen; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+          <div className={styles.overlayMeta}>
+            <div className={styles.overlayMetaRow}>
+              <h3 id={titleId} className={styles.overlayTitle}>
+                {item.title}
+              </h3>
+              {item.director ? (
+                <p className={styles.overlayDirector}>{item.director}</p>
+              ) : null}
+            </div>
+            {item.description ? (
+              <p className={styles.overlayDescription}>{item.description}</p>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
@@ -103,8 +112,25 @@ export default function FeaturedLaunches() {
       <ul className={styles.launchScroller}>
         {site.featured.items.map((item) => (
           <li key={item.slug} className={styles.launchCard}>
-            {item.placeholder ? (
+            {item.dmOnly ? (
+              <a
+                href={site.links.linkedin}
+                className={styles.launchButton}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src={item.image}
+                  alt=""
+                  fill
+                  sizes="432px"
+                  className={styles.launchImage}
+                />
+                <span className={styles.srOnly}>{item.title}</span>
+              </a>
+            ) : item.placeholder ? (
               <div className={styles.placeholderCard}>
+                <IconLock className={styles.lockIcon} />
                 <span>{item.title}</span>
               </div>
             ) : (
@@ -117,12 +143,9 @@ export default function FeaturedLaunches() {
                   src={item.image}
                   alt=""
                   fill
-                  sizes="(max-width: 767px) 100vw, 33vw"
+                  sizes="432px"
                   className={styles.launchImage}
                 />
-                <span className={styles.playBadge} aria-hidden="true">
-                  <IconPlay className={styles.playIcon} />
-                </span>
                 <span className={styles.srOnly}>Play {item.title}</span>
               </button>
             )}
