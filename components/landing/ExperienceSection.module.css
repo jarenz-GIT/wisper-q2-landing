@@ -41,6 +41,13 @@
   flex: 1 0 100%;
 }
 
+.tokenCluster {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+}
+
 .token {
   display: inline-flex;
   align-items: center;
@@ -55,6 +62,10 @@
   line-height: inherit;
   white-space: nowrap;
   cursor: pointer;
+}
+
+.tokenTrail {
+  color: var(--color-pure-black);
 }
 
 .token:hover,
@@ -94,6 +105,7 @@
   font-weight: var(--font-weight-mono-regular);
   letter-spacing: -0.48px;
   line-height: 13.2px;
+  text-transform: uppercase;
 }
 
 .body {
@@ -147,7 +159,7 @@
     line-height: 32px;
   }
 
-  .token {
+  .tokenCluster {
     white-space: normal;
   }
 }

@@ -69,17 +69,21 @@ export default function ExperienceSection() {
           const isActive = category.id === activeId;
 
           return (
-            <button
-              key={category.id}
-              type="button"
-              className={`${styles.token} ${isActive ? styles.tokenActive : ""}`}
-              style={{ "--token-color": category.color }}
-              aria-pressed={isActive}
-              onClick={() => select(category.id)}
-            >
-              <Icon className={styles.tokenIcon} />
-              <span>{category.label}</span>
-            </button>
+            <span key={category.id} className={styles.tokenCluster}>
+              <button
+                type="button"
+                className={`${styles.token} ${isActive ? styles.tokenActive : ""}`}
+                style={{ "--token-color": category.color }}
+                aria-pressed={isActive}
+                onClick={() => select(category.id)}
+              >
+                <Icon className={styles.tokenIcon} />
+                <span>{category.word}</span>
+              </button>
+              {category.trailing ? (
+                <span className={styles.tokenTrail}>{category.trailing}</span>
+              ) : null}
+            </span>
           );
         })}
       </p>

@@ -99,7 +99,7 @@ export default function FeaturedLaunches() {
           {site.featured.title}
         </h2>
         <a
-          href={site.links.linkedin}
+          href={site.links.linkedinDm}
           className={styles.lockNote}
           target="_blank"
           rel="noreferrer"
@@ -114,7 +114,7 @@ export default function FeaturedLaunches() {
           <li key={item.slug} className={styles.launchCard}>
             {item.dmOnly ? (
               <a
-                href={site.links.linkedin}
+                href={site.links.linkedinDm}
                 className={styles.launchButton}
                 target="_blank"
                 rel="noreferrer"
