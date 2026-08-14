@@ -136,85 +136,179 @@
   height: 14px;
 }
 
-.launchGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.launchScroller {
+  display: flex;
   gap: var(--spacing-2);
   margin: 0;
-  padding: 0;
+  padding: 0 0 var(--spacing-2);
   list-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--color-onglo-orange) transparent;
+  scrollbar-width: thin;
+}
+
+.launchScroller::-webkit-scrollbar {
+  height: 8px;
+}
+
+.launchScroller::-webkit-scrollbar-thumb {
+  background-color: var(--color-onglo-orange);
+  border-radius: 999px;
 }
 
 .launchCard {
   position: relative;
+  flex: 0 0 calc((100% - 32px) / 3);
   overflow: hidden;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius-lg);
   background-color: var(--color-neutral-300);
+  scroll-snap-align: start;
+}
+
+.launchButton {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.launchButton:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: 3px;
 }
 
 .launchImage {
   object-fit: cover;
 }
 
-.shortageBadge {
+.playBadge {
   position: absolute;
-  top: var(--spacing-3);
-  left: var(--spacing-3);
-  padding: 0.45rem 0.7rem;
-  border-radius: 8px;
-  background-color: rgb(252 252 252 / 92%);
-  color: var(--color-navy);
-  font-size: var(--font-size-body-12);
-  font-weight: var(--font-weight-sans-bold);
-  letter-spacing: 0.02em;
-  text-transform: lowercase;
-}
-
-.raiseOverlay {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-content: end;
-  gap: var(--spacing-2);
-  padding: var(--spacing-3);
-  background: linear-gradient(180deg, transparent 35%, rgb(0 0 0 / 55%) 100%);
-  color: var(--color-white);
-}
-
-.raiseAmount {
-  margin: 0;
-  font-size: clamp(2.4rem, 4vw, 3.5rem);
-  font-weight: var(--font-weight-sans-bold);
-  letter-spacing: -0.06em;
-  line-height: 0.9;
-}
-
-.raiseLogos {
-  display: flex;
-  gap: 0.45rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.raiseLogos li {
+  right: var(--spacing-2);
+  bottom: var(--spacing-2);
   display: grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background-color: rgb(252 252 252 / 18%);
-  font-size: 0.75rem;
-  font-weight: var(--font-weight-sans-bold);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background-color: rgb(252 252 252 / 92%);
+  color: var(--color-navy);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.raiseCaption {
-  grid-column: 1 / -1;
+.launchButton:hover .playBadge,
+.launchButton:focus-visible .playBadge {
+  opacity: 1;
+  transform: none;
+}
+
+.playIcon {
+  width: 18px;
+  height: 18px;
+  margin-left: 2px;
+}
+
+.placeholderCard {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: var(--spacing-3);
+  background:
+    linear-gradient(135deg, var(--color-neutral-100), var(--color-cotton-blue));
+  color: var(--color-navy-soft);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-14);
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: var(--spacing-3);
+  background-color: rgb(31 41 58 / 72%);
+}
+
+.overlayDialog {
+  display: flex;
+  flex-direction: column;
+  width: min(920px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-white);
+  box-shadow: 0 24px 64px rgb(0 0 0 / 28%);
+}
+
+.overlayBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+.overlayTitle {
   margin: 0;
-  font-size: var(--font-size-body-12);
-  letter-spacing: var(--letter-spacing-body-12);
+  color: var(--color-navy);
+  font-size: var(--font-size-heading-20);
+  font-weight: var(--font-weight-sans-bold);
+  letter-spacing: var(--letter-spacing-heading-20);
+  line-height: var(--line-height-heading-20);
+}
+
+.overlayClose {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-navy);
+  cursor: pointer;
+}
+
+.overlayClose:hover {
+  background-color: var(--color-neutral-100);
+}
+
+.overlayClose:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: 2px;
+}
+
+.overlayCloseIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.overlayFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-navy);
+}
+
+.overlayFrame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .experience {
@@ -363,7 +457,6 @@
 }
 
 @media (max-width: 1024px) {
-  .launchGrid,
   .cardGrid {
     grid-template-columns: 1fr;
   }
@@ -371,6 +464,10 @@
   .hero {
     grid-template-columns: 1fr;
     padding: var(--spacing-6) 0 var(--spacing-7);
+  }
+
+  .launchCard {
+    flex-basis: min(420px, 78vw);
   }
 }
 
@@ -383,6 +480,23 @@
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-1);
+  }
+
+  .launchScroller {
+    flex-direction: column;
+    overflow: visible;
+    scroll-snap-type: none;
+    padding-bottom: 0;
+  }
+
+  .launchCard {
+    flex: none;
+    width: 100%;
+  }
+
+  .playBadge {
+    opacity: 1;
+    transform: none;
   }
 
   .experience {
@@ -398,7 +512,8 @@
   .heroCta,
   .calendlyButton,
   .linkedinButton,
-  .socialTile {
+  .socialTile,
+  .playBadge {
     transition: none;
   }
 
