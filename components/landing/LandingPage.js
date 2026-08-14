@@ -1,8 +1,7 @@
-import Image from "next/image";
-
 import { site } from "@/lib/site";
 
-import { IconArrow, IconInstagram, IconLinkedIn, IconLock } from "./icons";
+import FeaturedLaunches from "./FeaturedLaunches";
+import { IconArrow, IconInstagram, IconLinkedIn } from "./icons";
 import styles from "./LandingPage.module.css";
 
 function BookLink({ href, className, children }) {
@@ -50,58 +49,7 @@ export default function LandingPage() {
         </BookLink>
       </section>
 
-      <section
-        id="featured"
-        className={styles.featured}
-        aria-labelledby="featured-heading"
-      >
-        <div className={styles.featuredHead}>
-          <h2 id="featured-heading" className={styles.sectionTitle}>
-            {site.featured.title}
-          </h2>
-          <a
-            href={site.links.linkedin}
-            className={styles.lockNote}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <IconLock className={styles.lockIcon} />
-            {site.featured.lockNote}
-          </a>
-        </div>
-
-        <ul className={styles.launchGrid}>
-          {site.featured.items.map((item) => (
-            <li key={item.slug} className={styles.launchCard}>
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                sizes="(max-width: 900px) 100vw, 33vw"
-                className={styles.launchImage}
-              />
-              {item.overlay ? (
-                <span className={styles.shortageBadge}>{item.overlay}</span>
-              ) : null}
-              {item.amount ? (
-                <div className={styles.raiseOverlay}>
-                  <p className={styles.raiseAmount}>{item.amount}</p>
-                  <ul className={styles.raiseLogos} aria-label="Investors">
-                    {item.logos.map((logo) => (
-                      <li key={logo.label} title={logo.label}>
-                        {logo.letter}
-                      </li>
-                    ))}
-                  </ul>
-                  {item.caption ? (
-                    <p className={styles.raiseCaption}>{item.caption}</p>
-                  ) : null}
-                </div>
-              ) : null}
-            </li>
-          ))}
-        </ul>
-      </section>
+      <FeaturedLaunches />
 
       <section
         id="experience"

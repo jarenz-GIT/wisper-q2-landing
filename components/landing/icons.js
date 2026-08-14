@@ -55,6 +55,35 @@ export function IconLock({ className }) {
   );
 }
 
+export function IconPlay({ className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M8.25 5.75v12.5L18.5 12 8.25 5.75Z" />
+    </svg>
+  );
+}
+
+export function IconClose({ className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <path d="M6 6 18 18M18 6 6 18" />
+    </svg>
+  );
+}
+
 export function IconArrow({ className }) {
   return (
     <svg
