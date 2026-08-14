@@ -112,7 +112,23 @@ export default function FeaturedLaunches() {
       <ul className={styles.launchScroller}>
         {site.featured.items.map((item) => (
           <li key={item.slug} className={styles.launchCard}>
-            {item.placeholder ? (
+            {item.dmOnly ? (
+              <a
+                href={site.links.linkedin}
+                className={styles.launchButton}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src={item.image}
+                  alt=""
+                  fill
+                  sizes="432px"
+                  className={styles.launchImage}
+                />
+                <span className={styles.srOnly}>{item.title}</span>
+              </a>
+            ) : item.placeholder ? (
               <div className={styles.placeholderCard}>
                 <IconLock className={styles.lockIcon} />
                 <span>{item.title}</span>
