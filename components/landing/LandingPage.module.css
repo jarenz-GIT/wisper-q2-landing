@@ -87,16 +87,11 @@
   height: 14px;
 }
 
-.featured,
-.experience,
-.infoCard {
-  scroll-margin-top: 88px;
-}
-
 .featured {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-3);
+  scroll-margin-top: 88px;
 }
 
 .featuredHead {
@@ -311,60 +306,6 @@
   border: 0;
 }
 
-.experience {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-5);
-  padding: var(--spacing-10) 0 var(--spacing-8);
-  text-align: center;
-}
-
-.experienceStatement {
-  max-width: 46rem;
-  margin: 0;
-  color: var(--color-navy);
-  font-size: clamp(1.5rem, 2.6vw, 2.15rem);
-  font-weight: var(--font-weight-sans-bold);
-  letter-spacing: -0.03em;
-  line-height: 1.25;
-}
-
-.highlight {
-  white-space: nowrap;
-}
-
-.experienceCard {
-  width: min(100%, 640px);
-  padding: var(--spacing-4);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-neutral-100);
-  text-align: left;
-  box-shadow: inset 0 -3px 0 0 var(--color-briglet-blue);
-}
-
-.experienceEyebrow {
-  margin: 0 0 var(--spacing-2);
-  color: var(--color-navy-soft);
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-body-12);
-  letter-spacing: 0.12em;
-  line-height: var(--line-height-body-12);
-  text-transform: uppercase;
-}
-
-.experienceBody {
-  margin: 0;
-  color: var(--color-navy);
-  font-size: var(--font-size-body-16);
-  letter-spacing: var(--letter-spacing-body-16);
-  line-height: 1.45;
-}
-
-.experienceBody em {
-  font-style: italic;
-}
-
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -372,6 +313,7 @@
 }
 
 .infoCard {
+  scroll-margin-top: 88px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -497,10 +439,6 @@
   .playBadge {
     opacity: 1;
     transform: none;
-  }
-
-  .experience {
-    padding: var(--spacing-7) 0 var(--spacing-5);
   }
 
   .infoCard {
