@@ -2,7 +2,7 @@
   min-height: 100vh;
   padding: calc(var(--spacing-12) + var(--spacing-4)) var(--spacing-3)
     var(--spacing-12);
-  background-color: var(--color-ivory);
+  background-color: var(--color-white);
   color: var(--color-copy-primary);
 }
 
