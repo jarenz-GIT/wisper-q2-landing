@@ -5,18 +5,18 @@ import { useCallback, useEffect, useState } from "react";
 import { site } from "@/lib/site";
 
 import {
-  IconEcommerceBag,
-  IconFilmClapper,
-  IconNonprofitGlobe,
-  IconTechDiamond,
+  IconEcommerce,
+  IconFilm,
+  IconNonprofits,
+  IconTech,
 } from "./ExperienceIcons";
 import styles from "./ExperienceSection.module.css";
 
 const ICONS = {
-  tech: IconTechDiamond,
-  nonprofits: IconNonprofitGlobe,
-  ecommerce: IconEcommerceBag,
-  film: IconFilmClapper,
+  tech: IconTech,
+  nonprofits: IconNonprofits,
+  ecommerce: IconEcommerce,
+  film: IconFilm,
 };
 
 const ROTATE_MS = 6000;
@@ -48,10 +48,6 @@ export default function ExperienceSection() {
     });
   }, [categories]);
 
-  const parts = site.experience.statement.split(
-    /(tech startups|nonprofits|ecommerce|film)/g,
-  );
-
   return (
     <section
       id="experience"
@@ -66,12 +62,9 @@ export default function ExperienceSection() {
       </h2>
 
       <p className={styles.statement}>
-        {parts.map((part, index) => {
-          const category = categories.find((item) => item.label === part);
-          if (!category) {
-            return <span key={`${part}-${index}`}>{part}</span>;
-          }
-
+        <span className={styles.fullLine}>{site.experience.lineOne}</span>
+        <span>{site.experience.prefix}</span>
+        {categories.map((category) => {
           const Icon = ICONS[category.id];
           const isActive = category.id === activeId;
 
@@ -97,15 +90,7 @@ export default function ExperienceSection() {
         aria-live="polite"
       >
         <p className={styles.eyebrow}>{active.eyebrow}</p>
-        <p className={styles.body}>
-          {active.bodyParts.map((chunk, index) =>
-            chunk.em ? (
-              <em key={index}>{chunk.text}</em>
-            ) : (
-              <span key={index}>{chunk.text}</span>
-            ),
-          )}
-        </p>
+        <p className={styles.body}>{active.body}</p>
         <div className={styles.progress} aria-hidden="true">
           <span
             key={`${activeId}-${reduceMotion ? "static" : "play"}`}

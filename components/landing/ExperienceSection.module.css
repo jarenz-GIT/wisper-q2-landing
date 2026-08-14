@@ -2,9 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-5);
-  padding: var(--spacing-10) 0 var(--spacing-8);
-  text-align: center;
+  gap: 24px;
+  width: min(671px, 100%);
+  margin: 0 auto;
+  padding: 80px 0;
   scroll-margin-top: 88px;
 }
 
@@ -21,19 +22,29 @@
 }
 
 .statement {
-  max-width: 46rem;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 5px;
+  align-items: center;
+  width: 100%;
+  max-width: 660px;
   margin: 0;
-  color: var(--color-navy);
-  font-size: clamp(1.5rem, 2.6vw, 2.15rem);
-  font-weight: var(--font-weight-sans-bold);
-  letter-spacing: -0.03em;
-  line-height: 1.35;
+  color: var(--color-pure-black);
+  font-size: 36px;
+  font-weight: var(--font-weight-sans-regular);
+  letter-spacing: -1.44px;
+  line-height: 39.6px;
+}
+
+.fullLine {
+  flex: 1 0 100%;
 }
 
 .token {
   display: inline-flex;
   align-items: center;
-  gap: 0.3em;
+  gap: 4px;
   margin: 0;
   padding: 0;
   border: 0;
@@ -44,7 +55,6 @@
   line-height: inherit;
   white-space: nowrap;
   cursor: pointer;
-  transition: color 0.2s ease;
 }
 
 .token:hover,
@@ -60,46 +70,46 @@
 }
 
 .tokenIcon {
-  width: 0.9em;
-  height: 0.9em;
+  width: auto;
+  height: 0.85em;
   flex-shrink: 0;
 }
 
 .card {
-  width: min(100%, 640px);
-  padding: var(--spacing-4) var(--spacing-4) var(--spacing-3);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-neutral-100);
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: var(--radius-sm);
+  background-color: #ececec;
 }
 
 .eyebrow {
-  margin: 0 0 var(--spacing-2);
-  color: var(--color-navy-soft);
+  margin: 0;
+  color: var(--color-pure-black);
   font-family: var(--font-family-mono);
-  font-size: var(--font-size-body-12);
-  letter-spacing: 0.12em;
-  line-height: var(--line-height-body-12);
-  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: var(--font-weight-mono-regular);
+  letter-spacing: -0.48px;
+  line-height: 13.2px;
 }
 
 .body {
-  margin: 0 0 var(--spacing-3);
-  color: var(--color-navy);
-  font-size: var(--font-size-body-16);
-  letter-spacing: var(--letter-spacing-body-16);
-  line-height: 1.45;
-}
-
-.body em {
-  font-style: italic;
+  margin: 0;
+  color: var(--color-pure-black);
+  font-size: 16px;
+  font-weight: var(--font-weight-sans-regular);
+  letter-spacing: -0.64px;
+  line-height: 17.6px;
 }
 
 .progress {
   height: 3px;
   overflow: hidden;
-  border-radius: 999px;
-  background-color: var(--color-neutral-300);
+  border-radius: 100px;
+  background-color: #a9a8a8;
 }
 
 .progressFill {
@@ -128,7 +138,13 @@
 
 @media (max-width: 767px) {
   .section {
-    padding: var(--spacing-7) 0 var(--spacing-5);
+    padding: 48px 0;
+  }
+
+  .statement {
+    font-size: 28px;
+    letter-spacing: -1.12px;
+    line-height: 32px;
   }
 
   .token {
@@ -137,10 +153,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .token {
-    transition: none;
-  }
-
   .progressFill {
     transform: scaleX(1);
     animation: none;

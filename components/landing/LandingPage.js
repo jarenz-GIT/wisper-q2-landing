@@ -2,7 +2,7 @@ import { site } from "@/lib/site";
 
 import ExperienceSection from "./ExperienceSection";
 import FeaturedLaunches from "./FeaturedLaunches";
-import { IconArrow, IconInstagram, IconLinkedIn } from "./icons";
+import { IconArrow, IconInstagram, IconLinkedIn, IconX } from "./icons";
 import styles from "./LandingPage.module.css";
 
 function BookLink({ href, className, children }) {
@@ -20,7 +20,9 @@ export default function LandingPage() {
       <section className={styles.hero} aria-labelledby="hero-heading">
         <div className={styles.heroCopy}>
           <h1 id="hero-heading" className={styles.headline}>
-            {site.hero.headline}
+            {site.hero.headlineTop}
+            <br />
+            {site.hero.headlineBottom}
           </h1>
           <p className={styles.subhead}>{site.hero.subhead}</p>
         </div>
@@ -76,6 +78,15 @@ export default function LandingPage() {
               aria-label="Wisper Studios on Instagram"
             >
               <IconInstagram className={styles.socialTileIcon} />
+            </a>
+            <a
+              href={site.links.x}
+              className={styles.socialTile}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Wisper Studios on X"
+            >
+              <IconX className={`${styles.socialTileIcon} ${styles.socialTileIconX}`} />
             </a>
           </div>
         </article>

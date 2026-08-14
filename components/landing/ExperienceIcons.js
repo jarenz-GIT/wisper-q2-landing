@@ -1,59 +1,84 @@
-export function IconTechDiamond({ className }) {
+export function IconTech({ className }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 2.4 21.2 12 12 21.6 2.8 12 12 2.4Z" />
+    <svg
+      className={className}
+      width="34"
+      height="34"
+      viewBox="0 0 34 34"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path d="M0 17 7.933 9.067 15.867 17l-7.934 7.933L0 17Z" fill="#3276FF" />
+      <path d="M9.067 26.067 17 18.133l7.933 7.934L17 34l-7.933-7.933Z" fill="#3276FF" />
+      <path d="M9.067 7.933 17 0l7.933 7.933L17 15.867 9.067 7.933Z" fill="#3276FF" />
+      <path d="M18.133 17 26.066 9.067 34 17l-7.934 7.933L18.133 17Z" fill="#3276FF" />
     </svg>
   );
 }
 
-export function IconNonprofitGlobe({ className }) {
+export function IconNonprofits({ className }) {
   return (
     <svg
       className={className}
-      viewBox="0 0 24 24"
+      width="27"
+      height="27"
+      viewBox="0 0 27 27"
       fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
       aria-hidden="true"
     >
-      <circle cx="12" cy="12" r="8.2" />
-      <ellipse cx="12" cy="12" rx="3.4" ry="8.2" />
-      <path d="M4.2 12h15.6M6.4 7.6h11.2M6.4 16.4h11.2" />
+      <path
+        d="M13.5 25.773c6.778 0 12.273-5.495 12.273-12.273S20.278 1.227 13.5 1.227 1.227 6.722 1.227 13.5s5.495 12.273 12.273 12.273Z"
+        stroke="#8B9A6E"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M1.227 13.5h24.545M13.5 1.227c-3.151 3.309-4.909 7.703-4.909 12.273 0 4.569 1.758 8.964 4.909 12.273 3.151-3.309 4.909-7.704 4.909-12.273 0-4.569-1.758-8.964-4.909-12.273Z"
+        stroke="#8B9A6E"
+        strokeWidth="2.45"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
-export function IconEcommerceBag({ className }) {
+export function IconEcommerce({ className }) {
   return (
     <svg
       className={className}
-      viewBox="0 0 24 24"
+      width="22"
+      height="24"
+      viewBox="0 0 22 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M6.2 7.4h11.6l-.8 11.2H7l-.8-11.2Z" />
-      <path d="M9 7.4V6.2A3 3 0 0 1 12 3.2a3 3 0 0 1 3 3v1.2" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M6.369 5.511V4.337C6.369 1.942 8.311 0 10.706 0c2.396 0 4.338 1.942 4.338 4.337v1.174c1.489.045 2.4.205 3.095.782.964.8 1.218 2.154 1.725 4.861l.868 4.627C21.445 19.589 21.802 21.492 20.762 22.746 19.721 24 17.784 24 13.91 24H7.502C3.628 24 1.691 24 .651 22.746-.39 21.492-.033 19.589.681 15.781l.867-4.626c.508-2.708.762-4.062 1.726-4.862.695-.577 1.606-.738 3.095-.782ZM8.104 4.337c0-1.437 1.165-2.602 2.602-2.602 1.438 0 2.603 1.165 2.603 2.602v1.157H8.104V4.337Z"
+        fill="#8A38F5"
+      />
     </svg>
   );
 }
 
-export function IconFilmClapper({ className }) {
+export function IconFilm({ className }) {
   return (
     <svg
       className={className}
-      viewBox="0 0 24 24"
+      width="24"
+      height="19"
+      viewBox="0 0 24 19"
       fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M4.4 9.4h15.2v10H4.4z" />
-      <path d="M4.8 5.2 19.2 8.4 18.4 9.4H4.4l.4-4.2Z" />
-      <path d="M7.2 5.8 8.8 9M11.2 6.8 12.6 9.2M15.2 7.8 16.4 9.3" />
+      <rect y="3" width="24" height="16" fill="#FF914D" />
+      <path
+        d="M3.941 4H0V0h1.584L3.941 4Zm7.36 0H7.904L5.548 0h3.396L11.3 4Zm6.865 0h-2.901L12.907 0h2.903L18.166 4ZM24 4h-1.87L19.773 0H24v4Z"
+        fill="#FF914D"
+      />
     </svg>
   );
 }
