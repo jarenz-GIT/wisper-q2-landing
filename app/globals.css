@@ -1,0 +1,275 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Figma Hand";
+  src: url("/fonts/figma-hand.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Figma Hand";
+  src: url("/fonts/figma-hand-bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+/**
+ * Wisper Design System — tokens read from Figma file `9ifnbgihcfs0N2uw7plpkw`
+ * (REST API `GET /v1/files/:key/nodes` on 2026-05-14). Swatch colors use each
+ * `Swatch` FRAME’s `fills[0]` RGB converted to hex.
+ */
+:root {
+  /* -------------------------------------------------------------------------
+     Logo — frame `12:379` (“Logo Application”).
+     Clear-space guidance exists only as TEXT layers (exclamation-point units);
+     no additional measurable tokens exported to CSS.
+     ------------------------------------------------------------------------- */
+
+  /* -------------------------------------------------------------------------
+     Color System — frame `12:441` (Swatch frames under “Colors” / “Tags”).
+     ------------------------------------------------------------------------- */
+  --color-white: #fcfcfc;
+  --color-ivory: #faf9f5;
+  --color-pelli-pink: #f5b5ae;
+  --color-onglo-orange: #ff914d;
+  --color-pumpkin-ninja: #c96e49;
+  --color-yumazo-yellow: #f6cb43;
+  --color-gooper-green: #8b9a6e;
+  --color-briglet-blue: #6391d3;
+  --color-cotton-blue: #a9c2dd;
+  --color-navy: #1f293a;
+  --color-tag-blue-beam: #3276ff;
+  --color-tag-green-beam: #d9ffb3;
+  --color-tag-purp-beam: #8a38f5;
+  --color-neutral-100: #ededed;
+  --color-neutral-300: #dadada;
+  --color-neutral-400: #bababa;
+  --color-neutral-500: #aeaeae;
+  --color-navy-soft: #414f69;
+
+  /* -------------------------------------------------------------------------
+     Color System + Logo + Typographic frames — TEXT fills on “Copy” / labels
+     (`#1c1c1c` on layers such as LOGO / BRAND / COLORS / TYPOGRAPHY headings).
+     ------------------------------------------------------------------------- */
+  --color-copy-primary: #1c1c1c;
+
+  /* -------------------------------------------------------------------------
+     Color System — TEXT fill on briglet blue & cotton blue swatch hex labels.
+     ------------------------------------------------------------------------- */
+  --color-pure-black: #000000;
+
+  /* -------------------------------------------------------------------------
+     Brand Strategy / Language frames — solid fill `#e5744b` on nested frames
+     (nodes `157:23`, `157:43`, `157:85`, `157:7`, `12:550`; no named swatch).
+     ------------------------------------------------------------------------- */
+  --color-e5744b: #e5744b;
+
+  /* -------------------------------------------------------------------------
+     Typography — Hanken Grotesk and DM Mono via `next/font/google` in
+     `app/layout.js` (`--font-hanken-grotesk`, `--font-mono`). Times New Roman
+     uses the system stack below (`--font-family-specimen-serif`). Fallbacks
+     match Figma family names (`12:22`, `284:2`, `288:137`, `12:379`).
+     ------------------------------------------------------------------------- */
+  --font-family-hand: "Figma Hand", cursive;
+  --font-family-sans: var(--font-hanken-grotesk), "Hanken Grotesk", system-ui, -apple-system,
+    sans-serif;
+  --font-family-mono: var(--font-mono), "DM Mono", ui-monospace, monospace;
+  --font-family-specimen-serif: "Times New Roman", Times, serif;
+  --font-family-rationale: "Roboto", system-ui, sans-serif;
+
+  --font-weight-sans-regular: 400;
+  --font-weight-sans-bold: 700;
+  --font-weight-sans-black: 900;
+  --font-weight-mono-light: 300;
+  --font-weight-mono-regular: 400;
+
+  /* Typographic System — frame `12:22` */
+  --font-size-typo-title: 15.397148132324219px;
+  --line-height-typo-title: 16.93686294555664px;
+  --letter-spacing-typo-title: 0.7698574066162109px;
+
+  --font-size-typo-dm-mono-24: 24px;
+  --line-height-typo-dm-mono-24: 28.80000114440918px;
+  --letter-spacing-typo-dm-mono-24: 0px;
+
+  --font-size-typo-times-26: 26.395111083984375px;
+  --line-height-typo-times-26: 31.674135208129883px;
+  --letter-spacing-typo-times-26: -0.5279022216796875px;
+
+  --font-size-typo-hanken-26: 26.395111083984375px;
+  --line-height-typo-hanken-26: 31.674135208129883px;
+  --letter-spacing-typo-hanken-26: -0.5279022216796875px;
+
+  --font-size-typo-dm-mono-48: 48px;
+  --line-height-typo-dm-mono-48: 72px;
+  --letter-spacing-typo-dm-mono-48: 0px;
+
+  --font-size-typo-hanken-52: 52.79022216796875px;
+  --line-height-typo-hanken-52: 63.348270416259766px;
+  --letter-spacing-typo-hanken-52: -1.055804443359375px;
+
+  --font-size-typo-hanken-64: 64px;
+  --line-height-typo-hanken-64: 64px;
+  --letter-spacing-typo-hanken-64: -1.28px;
+
+  /* Heading styles — frame `284:2` */
+  --font-size-heading-20: 20px;
+  --line-height-heading-20: 24px;
+  --letter-spacing-heading-20: -0.3px;
+
+  --font-size-heading-24: 24px;
+  --line-height-heading-24: 28px;
+  --letter-spacing-heading-24: -0.36px;
+
+  --font-size-heading-28: 28px;
+  --line-height-heading-28: 32px;
+  --letter-spacing-heading-28: -0.42px;
+
+  --font-size-heading-32: 32px;
+  --line-height-heading-32: 40px;
+  --letter-spacing-heading-32: -0.48px;
+
+  --font-size-heading-40: 40px;
+  --line-height-heading-40: 48px;
+  --letter-spacing-heading-40: -0.6px;
+
+  --font-size-heading-48: 48px;
+  --line-height-heading-48: 56px;
+  --letter-spacing-heading-48: -0.72px;
+
+  /* “Rationale” label — frame `284:2` */
+  --font-size-rationale: 24px;
+  --line-height-rationale: 28.125px;
+  --letter-spacing-rationale: -0.36px;
+
+  /* Body styles — frame `288:137` (“Example” rows) */
+  --font-size-body-12: 12px;
+  --line-height-body-12: 16px;
+  --letter-spacing-body-12: -0.18px;
+
+  --font-size-body-14: 14px;
+  --line-height-body-14: 16px;
+  --letter-spacing-body-14: -0.21px;
+
+  --font-size-body-16: 16px;
+  --line-height-body-16: 20px;
+  --letter-spacing-body-16: -0.24px;
+
+  /* Logo Application — frame `12:379` */
+  --font-size-logo-dm-mono-48: 48px;
+  --line-height-logo-dm-mono-48: 72px;
+  --letter-spacing-logo-dm-mono-48: 0px;
+
+  --font-size-logo-dm-mono-primary-48: 48px;
+  --line-height-logo-dm-mono-primary-48: 63.36000061035156px;
+  --letter-spacing-logo-dm-mono-primary-48: 0px;
+
+  --font-size-logo-wordmark-primary: 149.90037536621094px;
+  --line-height-logo-wordmark-primary: 164.89041137695312px;
+  --letter-spacing-logo-wordmark-primary: -10.493026275634767px;
+
+  --font-size-logo-clear-space-vertical-note: 15px;
+  --line-height-logo-clear-space-vertical-note: 16.5px;
+  --letter-spacing-logo-clear-space-vertical-note: -0.3px;
+
+  --font-size-logo-clear-space-horizontal-note: 12px;
+  --line-height-logo-clear-space-horizontal-note: 13.200000762939453px;
+  --letter-spacing-logo-clear-space-horizontal-note: -0.24px;
+
+  --font-size-logo-wordmark-secondary: 125.54155731201172px;
+  --line-height-logo-wordmark-secondary: 138.09571838378906px;
+  --letter-spacing-logo-wordmark-secondary: -8.78790901184082px;
+
+  --font-size-logo-clear-space-small-note: 10px;
+  --line-height-logo-clear-space-small-note: 11px;
+  --letter-spacing-logo-clear-space-small-note: -0.2px;
+
+  --font-size-logo-mark-single-letter: 221.74844360351562px;
+  --line-height-logo-mark-single-letter: 243.9232940673828px;
+  --letter-spacing-logo-mark-single-letter: -15.522391052246094px;
+
+  /* -------------------------------------------------------------------------
+     Spacing — 8px multiples (product rule; not variable definitions in Figma).
+     ------------------------------------------------------------------------- */
+  --spacing-1: 8px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+  --spacing-5: 40px;
+  --spacing-6: 48px;
+  --spacing-7: 56px;
+  --spacing-8: 64px;
+  --spacing-9: 72px;
+  --spacing-10: 80px;
+  --spacing-11: 88px;
+  --spacing-12: 96px;
+
+  /* -------------------------------------------------------------------------
+     Corner radius — 12px / 24px only (product rule).
+     ------------------------------------------------------------------------- */
+  --radius-sm: 12px;
+  --radius-lg: 24px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-16);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: var(--line-height-body-16);
+  letter-spacing: var(--letter-spacing-body-16);
+  color: var(--color-copy-primary);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-onglo-orange);
+  color: var(--color-ivory);
+}
+
+::-moz-selection {
+  background-color: var(--color-onglo-orange);
+  color: var(--color-ivory);
+}
+
+/* Scrollbar — onglo orange pill thumb */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-onglo-orange) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-onglo-orange);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}

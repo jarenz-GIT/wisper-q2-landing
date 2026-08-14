@@ -1,0 +1,594 @@
+/* Who We Serve — Figma 822:3941 (Wisper Refresh 2026) */
+
+/* ─── Local tokens ──────────────────────────────────────────────────────── */
+.section {
+  --wws-muted: color-mix(in srgb, var(--color-navy) 28%, var(--color-white));
+  --wws-medium: color-mix(in srgb, var(--color-navy) 12%, var(--color-white));
+  --wws-row-count: 5;
+  --wws-row-height: 74px;
+  --wws-step-height: 50px;
+  --wws-label-width: 108px;
+
+  /* Match Partners pattern exactly: flex container, min-height 100vh, no explicit height */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px var(--spacing-5) 48px;
+  overflow: hidden;
+  background-color: var(--color-navy);
+}
+
+.pinClip {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ─── Inner — flex: 1 grows to fill section height ───────────────────────── */
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  max-width: 1178px;
+  /* flex: 1 + min-height: 0 lets this fill the section and distribute height to children */
+  flex: 1;
+  min-height: 0;
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+  width: 100%;
+  flex-shrink: 0;
+  margin-bottom: 48px;
+  text-align: left;
+}
+
+.subtitle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wws-muted);
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.headlineLine {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-typo-hanken-64);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 0.9;
+  letter-spacing: calc(var(--letter-spacing-typo-hanken-64) * 2);
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* ─── Body — grows to fill remaining vertical space ─────────────────────── */
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28%;
+  grid-template-rows: auto auto;
+  column-gap: var(--spacing-1);
+  row-gap: 24px;
+  align-content: center;
+  width: 100%;
+  flex: 0 1 auto;
+  min-height: 0;
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  padding-block: 0;
+}
+
+/* ─── Tab list — left column, aligned with timeline image ─────────────── */
+.tabList {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  align-items: center;
+  align-self: end;
+  justify-self: start;
+  flex-shrink: 0;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: var(--spacing-1);
+  border-radius: 4px;
+}
+
+.tabActive {
+  opacity: 1;
+}
+
+.tabInactive {
+  opacity: 0.5;
+}
+
+.tabInactive:hover {
+  opacity: 0.75;
+}
+
+.tabIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 26px;
+}
+
+.tabIcon img,
+.tabIconImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tabLabel {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-white);
+}
+
+/* ─── Content panels — grow to fill body after tabList ──────────────────── */
+.panels {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+  padding-right: calc(28% + 20px);
+  box-sizing: border-box;
+  transition: opacity 0.3s ease;
+}
+
+.panelActive {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.panelHidden {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+/* ─── Timeline column ───────────────────────────────────────────────────── */
+.timelineCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  flex: none;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+  justify-content: flex-start;
+}
+
+/* ─── Timeline image from Sanity ────────────────────────────────────────── */
+.timelineImageWrap {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  flex: 0 1 auto;
+  align-self: flex-start;
+  min-height: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  aspect-ratio: 1864 / 948;
+  overflow: hidden;
+}
+
+.timelineImage {
+  display: block;
+  position: absolute;
+  top: -2.32%;
+  left: -1.5%;
+  width: 103.01%;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+}
+
+/* ─── Quote card ────────────────────────────────────────────────────────── */
+.quoteCard {
+  --quote-font-scale: 1;
+
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 28%;
+  transform: translateY(-50%);
+  align-self: flex-start;
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+  max-height: none;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-1);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.quoteContent {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+  height: 100%;
+}
+
+.quoteIcon {
+  align-self: end;
+  margin-bottom: calc(var(--spacing-2) * var(--quote-font-scale));
+  width: calc(48px * var(--quote-font-scale));
+  height: calc(48px * var(--quote-font-scale));
+  flex-shrink: 0;
+}
+
+.quoteIcon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.quoteBody {
+  display: contents;
+}
+
+.quoteText {
+  align-self: center;
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: calc(var(--font-size-body-16) * var(--quote-font-scale));
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1.35;
+  letter-spacing: calc(var(--letter-spacing-body-16) * var(--quote-font-scale));
+  color: var(--color-white);
+  overflow-wrap: break-word;
+  white-space: pre-line;
+}
+
+.quoteAttribution {
+  display: flex;
+  flex-direction: column;
+  gap: calc(4px * var(--quote-font-scale));
+  align-self: start;
+  margin-top: calc(var(--spacing-2) * var(--quote-font-scale));
+  flex-shrink: 0;
+}
+
+.quoteName {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: calc(16px * var(--quote-font-scale));
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1.25;
+  letter-spacing: calc(var(--letter-spacing-body-16) * var(--quote-font-scale));
+  color: var(--color-white);
+}
+
+.quoteRole {
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: calc(14px * var(--quote-font-scale));
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wws-muted);
+  overflow-wrap: break-word;
+}
+
+/* ─── Progress bar — always visible at bottom of inner ──────────────────── */
+.progressBar {
+  width: 100%;
+  flex-shrink: 0;
+  padding-bottom: 0;
+  transition: margin-top 0.25s ease;
+}
+
+.progressBarStartup {
+  margin-top: 0;
+}
+
+.progressTrack {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background-color: var(--color-neutral-400);
+  overflow: hidden;
+}
+
+.progressFill {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-onglo-orange);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+/* ─── Tablet ─────────────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .section {
+    padding: 40px var(--spacing-4) 48px;
+  }
+
+  .header {
+    margin-bottom: var(--spacing-5);
+  }
+
+  .headlineLine {
+    font-size: var(--font-size-heading-40);
+    letter-spacing: var(--letter-spacing-heading-40);
+  }
+
+  .tabList {
+    gap: var(--spacing-4);
+  }
+
+  .tabLabel {
+    font-size: var(--font-size-body-14);
+  }
+
+  .tabIcon {
+    width: 24px;
+    height: 22px;
+  }
+
+  .panel {
+    gap: var(--spacing-3);
+    padding-right: calc(32% + var(--spacing-3));
+  }
+
+  .timelineCol {
+    width: 100%;
+  }
+
+  .quoteCard {
+    width: 32%;
+  }
+
+  .quoteIcon {
+    width: calc(40px * var(--quote-font-scale));
+    height: calc(40px * var(--quote-font-scale));
+  }
+
+  .quoteText {
+    font-size: calc(var(--font-size-body-16) * var(--quote-font-scale));
+    letter-spacing: calc(var(--letter-spacing-body-16) * var(--quote-font-scale));
+    line-height: 1.35;
+  }
+
+  .quoteName {
+    font-size: calc(16px * var(--quote-font-scale));
+    letter-spacing: calc(var(--letter-spacing-body-16) * var(--quote-font-scale));
+  }
+
+  .quoteRole {
+    font-size: calc(14px * var(--quote-font-scale));
+    letter-spacing: calc(var(--letter-spacing-body-14) * var(--quote-font-scale));
+  }
+
+  .progressBar {
+    margin-top: 48px;
+  }
+
+  .progressBarStartup {
+    margin-top: 48px;
+  }
+}
+
+/* ─── Mobile ─────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .section {
+    --wws-row-height: 56px;
+    --wws-step-height: 38px;
+    --wws-label-width: 76px;
+
+    padding: 40px var(--spacing-3) 48px;
+  }
+
+  .inner {
+    gap: 0;
+  }
+
+  .header {
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .headlineLine {
+    font-size: var(--font-size-heading-32);
+    letter-spacing: var(--letter-spacing-heading-32);
+  }
+
+  /* Keep short headline on one line without clipping in overflow:hidden section */
+  @media (max-width: 400px) {
+    .headlineLine {
+      font-size: var(--font-size-heading-24);
+      letter-spacing: var(--letter-spacing-heading-24);
+    }
+  }
+
+  .body {
+    grid-template-columns: 1fr;
+    row-gap: var(--spacing-3);
+  }
+
+  .tabList {
+    grid-column: 1;
+    align-self: start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    overflow: visible;
+    gap: var(--spacing-2);
+  }
+
+  .panels {
+    grid-column: 1;
+  }
+
+  .tab {
+    flex-shrink: 0;
+  }
+
+  .tabLabel {
+    font-size: var(--font-size-body-12);
+  }
+
+  .tabIcon {
+    width: 22px;
+    height: 20px;
+  }
+
+  .panel {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-3);
+    padding-right: 0;
+  }
+
+  .timelineCol {
+    flex: 0 1 auto;
+    width: 100%;
+  }
+
+  .timelineImageWrap {
+    min-height: 0;
+    max-height: none;
+  }
+
+  .timelineImage {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .quoteCard {
+    position: static;
+    width: auto;
+    transform: none;
+    align-self: stretch;
+    flex: 0 1 auto;
+    min-height: 0;
+    height: auto;
+    max-height: none;
+    padding: var(--spacing-1);
+  }
+
+  .quoteContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    height: auto;
+  }
+
+  .quoteIcon,
+  .quoteText,
+  .quoteAttribution {
+    align-self: flex-start;
+    margin: 0;
+  }
+
+  .quoteIcon {
+    width: calc(36px * var(--quote-font-scale));
+    height: calc(36px * var(--quote-font-scale));
+  }
+
+  .quoteText {
+    font-size: calc(var(--font-size-body-16) * var(--quote-font-scale));
+    letter-spacing: calc(var(--letter-spacing-body-16) * var(--quote-font-scale));
+    line-height: 1.35;
+  }
+
+  .quoteName {
+    font-size: calc(16px * var(--quote-font-scale));
+    letter-spacing: calc(var(--letter-spacing-body-16) * var(--quote-font-scale));
+  }
+
+  .quoteRole {
+    font-size: calc(14px * var(--quote-font-scale));
+    letter-spacing: calc(var(--letter-spacing-body-14) * var(--quote-font-scale));
+  }
+
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .panel {
+    transition: none;
+  }
+
+  .progressFill {
+    transform: scaleX(1);
+  }
+}

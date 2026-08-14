@@ -1,0 +1,528 @@
+/* PricingHero — Figma 883:2252 (Wisper Refresh 2026) */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: var(--color-ivory);
+}
+
+/* ─── Selector ───────────────────────────────────────────────────────────── */
+.selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  width: 100%;
+  padding: calc(var(--spacing-12) + var(--spacing-4)) var(--spacing-8) 0;
+  text-align: center;
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-typo-hanken-64);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-typo-hanken-64);
+  color: var(--color-navy);
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 620px;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-heading-20);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-heading-20);
+  color: var(--color-navy);
+}
+
+.subtitle em {
+  font-family: var(--font-family-specimen-serif);
+  font-style: italic;
+}
+
+/* ─── Package section ────────────────────────────────────────────────────── */
+.packages {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  padding: var(--spacing-10) var(--spacing-8) var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+/* Grid background */
+.grid {
+  --pricing-grid-line: color-mix(in srgb, var(--color-navy) 16%, transparent);
+
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 1;
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent 49px,
+      var(--pricing-grid-line) 49px,
+      var(--pricing-grid-line) 50px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 49px,
+      var(--pricing-grid-line) 49px,
+      var(--pricing-grid-line) 50px
+    );
+  background-size: 50px 50px;
+  background-position: center;
+  mask-image:
+    linear-gradient(
+      to right,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    );
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(
+      to right,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    );
+  -webkit-mask-composite: source-in;
+}
+
+.gridImg {
+  display: none;
+}
+
+/* Meta strip */
+.metaStrip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.metaLabel {
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: -0.48px;
+  text-transform: uppercase;
+  color: var(--color-navy);
+}
+
+/* ─── Card grid ──────────────────────────────────────────────────────────── */
+.cardGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-3);
+  align-items: stretch;
+  width: 100%;
+  padding-top: var(--spacing-3);
+  perspective: 1000px;
+}
+
+.emptyPackages {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-14);
+  color: var(--color-navy);
+}
+
+/* ─── Individual card ────────────────────────────────────────────────────── */
+.card {
+  --card-tilt-x: 0deg;
+  --card-tilt-y: 0deg;
+  --card-lift: 0px;
+
+  position: relative;
+  height: 100%;
+  transform: translateY(var(--card-lift)) rotateX(var(--card-tilt-x)) rotateY(var(--card-tilt-y));
+  transform-style: preserve-3d;
+  transition:
+    transform 0.18s ease-out,
+    filter 0.18s ease-out;
+  will-change: transform;
+}
+
+.card:hover {
+  filter: drop-shadow(0 14px 20px rgba(31, 41, 58, 0.12));
+}
+
+.cardFlipper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cardBack,
+.cardFront {
+  border-radius: var(--radius-sm);
+  backface-visibility: hidden;
+}
+
+.cardBack {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-ivory);
+  border: 0.534px solid rgba(31, 41, 58, 0.2);
+  box-shadow: 0 0 1.069px rgba(0, 0, 0, 0.15);
+  transform: rotateY(180deg);
+}
+
+.cardFront {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: var(--spacing-3);
+  padding-top: var(--spacing-4);
+  border: 0.534px solid rgba(31, 41, 58, 0.2);
+  background-color: var(--color-ivory);
+  box-shadow: 0 0 1.069px rgba(0, 0, 0, 0.15);
+  gap: var(--spacing-2);
+}
+
+.cardRecommended .cardBack,
+.cardRecommended .cardFront {
+  border-color: rgba(31, 41, 58, 0.4);
+  box-shadow: 0 0 2.137px rgba(0, 0, 0, 0.25);
+}
+
+/* "Recommended" badge */
+.recommendedTag {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 20px;
+  border-radius: 55px;
+  background-color: var(--color-tag-blue-beam);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-14);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-body-14);
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* ─── Card top ───────────────────────────────────────────────────────────── */
+.cardTop {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.cardHeading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 8px;
+  border-bottom: 0.534px solid var(--color-onglo-orange);
+}
+
+.cardAvatar {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cardAvatarImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.cardName {
+  margin: 0;
+  font-family: var(--font-family-specimen-serif);
+  font-style: italic;
+  font-size: var(--font-size-body-16);
+  line-height: normal;
+  letter-spacing: -0.32px;
+  color: var(--color-navy);
+}
+
+.cardPriceBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardPrice {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-heading-40);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: normal;
+  letter-spacing: var(--letter-spacing-heading-40);
+  color: var(--color-navy);
+}
+
+.cardBilling {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-12);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1;
+  letter-spacing: -0.19px;
+  color: var(--color-navy);
+}
+
+/* ─── Feature list ───────────────────────────────────────────────────────── */
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 4px 0;
+  border-bottom: 0.534px solid rgba(31, 41, 58, 0.15);
+}
+
+.featureItem:last-child {
+  border-bottom: none;
+}
+
+.featureIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 9px;
+  padding-top: 2px;
+}
+
+.featureIcon img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.featureExcluded .featureText {
+  opacity: 0.45;
+}
+
+.featureText {
+  flex: 1;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-12);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1.2;
+  letter-spacing: -0.19px;
+  color: var(--color-navy);
+}
+
+.featureText em {
+  font-family: var(--font-family-specimen-serif);
+  font-style: italic;
+}
+
+/* ─── Card CTA ───────────────────────────────────────────────────────────── */
+.cardCta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-1) 12px;
+  border: 1px solid var(--color-cotton-blue);
+  border-radius: 4px;
+  background-color: var(--color-ivory);
+  text-decoration: none;
+  flex-shrink: 0;
+  color: var(--color-navy);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.cardCta:hover {
+  background-color: var(--color-cotton-blue);
+  border-color: var(--color-cotton-blue);
+}
+
+.cardCta:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: 2px;
+}
+
+.cardCtaRecommended {
+  background-color: var(--color-onglo-orange);
+  border: 0;
+  color: var(--color-ivory);
+}
+
+.cardCtaLabel {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-12);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+  color: currentColor;
+  white-space: nowrap;
+}
+
+.cardCtaLabel em {
+  font-family: var(--font-family-specimen-serif);
+  font-style: italic;
+}
+
+.cardCtaRecommended .cardCtaLabel {
+  color: currentColor;
+}
+
+.cardCtaArrow {
+  display: block;
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  background-color: currentColor;
+  mask: url("/images/hero/cta-arrow.svg") center / contain no-repeat;
+  -webkit-mask: url("/images/hero/cta-arrow.svg") center / contain no-repeat;
+  transform: scaleY(-1);
+  transition: transform 0.3s ease;
+}
+
+.cardCta:hover .cardCtaArrow,
+.cardCta:focus-visible .cardCtaArrow {
+  transform: translateX(4px) rotate(45deg) scaleY(-1);
+}
+
+/* ─── Tablet ─────────────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .selector {
+    padding: var(--spacing-12) var(--spacing-4) var(--spacing-5);
+    gap: var(--spacing-2);
+  }
+
+  .headline {
+    font-size: var(--font-size-heading-48);
+    letter-spacing: var(--letter-spacing-heading-48);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-body-16);
+  }
+
+  .packages {
+    padding: var(--spacing-4) var(--spacing-4) var(--spacing-6);
+  }
+
+  .metaStrip {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(2, 250px);
+    justify-content: center;
+  }
+}
+
+/* ─── Mobile ─────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .selector {
+    padding: var(--spacing-10) var(--spacing-3) var(--spacing-4);
+    gap: var(--spacing-2);
+  }
+
+  .headline {
+    font-size: var(--font-size-heading-40);
+    letter-spacing: var(--letter-spacing-heading-40);
+  }
+
+  .subtitle {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .packages {
+    padding: var(--spacing-3) var(--spacing-3) var(--spacing-5);
+  }
+
+  .metaStrip {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-1);
+    text-align: center;
+  }
+
+  .cardGrid {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    padding-top: 0;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 325px;
+  }
+}
+
+/* ─── Reduced motion ────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .card:hover {
+    filter: none;
+  }
+
+  .cardCta {
+    transition: none;
+  }
+
+  .cardCtaArrow {
+    transition: none;
+  }
+}

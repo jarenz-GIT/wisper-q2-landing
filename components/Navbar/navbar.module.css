@@ -1,0 +1,474 @@
+/* Site navbar — extracted from Hero nav v3 (`807:3340`) */
+
+.shell {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 10px 10px 0;
+  transform: translateY(0);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.shellHidden {
+  transform: translateY(calc(-100% - 10px));
+  pointer-events: none;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px var(--spacing-4);
+}
+
+.logoLink {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.logoStack {
+  position: relative;
+  display: block;
+  width: 148px;
+  height: 27px;
+}
+
+.logo {
+  display: block;
+  width: auto;
+  height: 27px;
+  transition: opacity 0.25s ease;
+}
+
+.logoOverlay {
+  position: absolute;
+  inset: 0;
+}
+
+.logoHidden {
+  opacity: 0;
+}
+
+.logoLink:hover {
+  opacity: 0.85;
+}
+
+.logoLink:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: var(--spacing-1);
+}
+
+.navPill {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  padding: 12px var(--spacing-3);
+  background-color: var(--color-white);
+  border: 2px solid var(--color-onglo-orange);
+  border-radius: var(--radius-lg);
+}
+
+.navPillLink {
+  position: relative;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-typo-title);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1.5;
+  letter-spacing: calc(var(--letter-spacing-typo-title) * -0.78);
+  color: var(--color-navy);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.navPillLink:hover {
+  color: var(--color-white);
+}
+
+.navPillLinkInner {
+  position: relative;
+  z-index: 1;
+  transition: font-style 0s;
+}
+
+/* Parallelogram — word-width only; extends slightly past text without shifting layout */
+.navPillLinkInner::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: -3px;
+  right: -3px;
+  background-color: var(--color-onglo-orange);
+  transform: skewX(-14deg) scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.navPillLink:hover .navPillLinkInner::before {
+  transform: skewX(-14deg) scaleX(1);
+}
+
+.navPillLink:hover .navPillLinkInner {
+  font-style: italic;
+}
+
+.navPillLink:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: var(--spacing-1);
+}
+
+.navCta {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px var(--spacing-3) 10px;
+  background-color: var(--color-onglo-orange);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.navCta:active {
+  transform: translateY(1px);
+}
+
+.navCta:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: var(--spacing-1);
+}
+
+.navCtaLabel {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-style: italic;
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: calc(var(--letter-spacing-body-16) * 2);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-white);
+}
+
+.navCtaIcon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.navCta:hover .navCtaIcon,
+.navCta:focus-visible .navCtaIcon {
+  transform: translateX(4px) rotate(45deg);
+}
+
+.navCtaIconImage {
+  display: block;
+  transform: scaleY(-1);
+}
+
+.mobileLogoLink {
+  display: none;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.mobileLogoLink:hover {
+  opacity: 0.9;
+}
+
+.mobileLogoLink:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: var(--spacing-1);
+  border-radius: var(--radius-sm);
+}
+
+.mobileLogoPill {
+  position: relative;
+  display: block;
+  width: 65px;
+  height: 25px;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.mobileLogoImage {
+  display: block;
+  width: 65px;
+  height: 25px;
+  transition: opacity 0.25s ease;
+}
+
+.mobileLogoNavy {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 65px;
+  height: 25px;
+  transition: opacity 0.25s ease;
+}
+
+.menuButton {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.menuButtonIcon {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+
+.menuButton:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: var(--spacing-1);
+  border-radius: var(--radius-sm);
+}
+
+.mobileMenuOverlay {
+  display: none;
+}
+
+.mobileMenuPanel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 48px 36px;
+  background-color: var(--color-white);
+  border: 2px solid var(--color-onglo-orange);
+  border-radius: var(--radius-lg);
+  will-change: opacity, transform;
+}
+
+.mobileMenuClose {
+  position: absolute;
+  top: 21px;
+  right: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.mobileMenuCloseIcon {
+  display: block;
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
+
+.mobileMenuCloseLine {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 25px;
+  height: 4px;
+  margin-top: -2px;
+  background-color: var(--color-onglo-orange);
+  border-radius: 999px;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.mobileMenuCloseLinePrimary {
+  transform: rotate(45deg);
+}
+
+.mobileMenuCloseLineSecondary {
+  transform: rotate(-45deg);
+}
+
+.mobileMenuClose:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.mobileMenuPages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobileMenuLink {
+  font-family: var(--font-family-sans);
+  font-size: 15px;
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1.5;
+  letter-spacing: -0.6px;
+  color: var(--color-navy);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.mobileMenuLink:hover,
+.mobileMenuLink:focus-visible {
+  color: var(--color-onglo-orange);
+}
+
+.mobileMenuLink:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: var(--spacing-1);
+  border-radius: var(--radius-sm);
+}
+
+.mobileMenuCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 24px 10px;
+  background-color: var(--color-onglo-orange);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.mobileMenuCta:hover {
+  filter: brightness(0.92);
+}
+
+.mobileMenuCta:active {
+  transform: translateY(1px);
+}
+
+.mobileMenuCta:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: var(--spacing-1);
+}
+
+.mobileMenuCtaLabel {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-style: italic;
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: -0.48px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-white);
+}
+
+.mobileMenuCtaIcon {
+  transform: scaleY(-1);
+}
+
+@media (max-width: 1023px) {
+  .nav {
+    padding-inline: var(--spacing-4);
+  }
+}
+
+/* Phone only; tablet keeps the standard navbar. */
+@media (max-width: 767px) {
+  .shell {
+    padding: var(--spacing-1);
+  }
+
+  .shellMenuOpen {
+    z-index: 200;
+  }
+
+  .nav {
+    position: relative;
+    z-index: 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--spacing-2);
+    gap: var(--spacing-2);
+  }
+
+  .logoLink,
+  .navPill,
+  .navCta {
+    display: none;
+  }
+
+  .mobileLogoLink,
+  .menuButton {
+    display: inline-flex;
+  }
+
+  .mobileMenuOverlay {
+    display: block;
+    position: absolute;
+    top: 54px;
+    left: 24px;
+    right: 24px;
+    z-index: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell {
+    transition: none;
+  }
+
+  .logoLink,
+  .logo,
+  .mobileLogoImage,
+  .mobileLogoNavy,
+  .navPillLink,
+  .navPillLinkInner::before,
+  .navCta,
+  .navCtaIcon,
+  .mobileLogoLink,
+  .mobileMenuLink,
+  .mobileMenuCta {
+    transition: none;
+  }
+
+  .mobileMenuOverlay {
+    animation: none;
+  }
+
+  .mobileMenuPanel {
+    will-change: auto;
+  }
+
+  .mobileMenuCloseLine {
+    will-change: auto;
+  }
+}

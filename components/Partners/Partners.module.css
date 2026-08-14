@@ -1,0 +1,367 @@
+/* Partners / Positioning — Figma `815:1990` (Wisper Refresh 2026) */
+
+.section {
+  --partners-subtitle: color-mix(in srgb, var(--color-navy) 28%, var(--color-white));
+  --partners-shadow: color-mix(in srgb, var(--color-pure-black) 15%, transparent);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 39px var(--spacing-6);
+  overflow: hidden;
+  background-color: var(--color-ivory);
+}
+
+.pinWrapper {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-ivory);
+}
+
+.grid {
+  position: absolute;
+  inset: 0 var(--spacing-6);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-navy) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-navy) 6%, transparent) 1px, transparent 1px);
+  background-size: 54px 54px;
+  /* fade all four edges: left/right fade, then top/bottom fade, intersected */
+  -webkit-mask-image:
+    linear-gradient(to right,  transparent 0%, black 10%, black 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 8%,  black 92%, transparent 100%);
+  -webkit-mask-composite: destination-in;
+  mask-image:
+    linear-gradient(to right,  transparent 0%, black 10%, black 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 8%,  black 92%, transparent 100%);
+  mask-composite: intersect;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+  width: 100%;
+  max-width: 1178px;
+  min-height: calc(100vh - 78px);
+  justify-content: center;
+}
+
+.contentGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6);
+  width: 100%;
+}
+
+/* Header — `815:1991` */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  width: 100%;
+  text-align: center;
+}
+
+.subtitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--partners-subtitle);
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 686px;
+  margin: 0;
+  line-height: 0.9;
+  text-transform: capitalize;
+}
+
+.headlineLine {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-typo-hanken-64);
+  font-weight: var(--font-weight-sans-regular);
+  letter-spacing: calc(var(--letter-spacing-typo-hanken-64) * 2);
+  color: var(--color-navy);
+}
+
+.headlineSerif {
+  font-family: var(--font-family-specimen-serif);
+  font-style: italic;
+  color: var(--color-onglo-orange);
+}
+
+.body {
+  margin: 0;
+  max-width: 454px;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-16);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1.1;
+  letter-spacing: calc(var(--letter-spacing-body-16) * 2.67);
+  color: var(--color-pure-black);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px var(--spacing-3) 10px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  background-color: var(--color-onglo-orange);
+  transition: transform 0.2s ease;
+}
+
+.cta:active {
+  transform: translateY(1px);
+}
+
+.cta:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: var(--spacing-1);
+}
+
+.ctaLabel {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-style: italic;
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: calc(var(--letter-spacing-body-16) * 2);
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.ctaArrow {
+  display: block;
+  width: 9px;
+  height: 9px;
+  color: var(--color-white);
+  transform: scaleY(-1);
+  transition: transform 0.3s ease;
+}
+
+.cta:hover .ctaArrow,
+.cta:focus-visible .ctaArrow {
+  transform: translateX(4px) rotate(45deg) scaleY(-1);
+}
+
+/* Logo grid — `815:2001` */
+.logoGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  width: 100%;
+  align-items: center;
+}
+
+.logoRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logoRowBottom {
+  justify-content: center;
+}
+
+.logoRow > li {
+  flex-shrink: 0;
+}
+
+.logoCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 120px;
+  padding: var(--spacing-3);
+  margin: 0;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-ivory);
+  box-shadow: 0 0 1.069px var(--partners-shadow);
+}
+
+.cardYellow  { border-color: var(--color-yumazo-yellow); }
+.cardOrange  { border-color: var(--color-onglo-orange); }
+.cardBlue    { border-color: var(--color-briglet-blue); }
+.cardGreen   { border-color: var(--color-gooper-green); }
+.cardCotton  { border-color: var(--color-cotton-blue); }
+.cardPink    { border-color: var(--color-pelli-pink); }
+
+.logoImageWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.logoImage {
+  object-fit: contain;
+}
+
+/* Race bars — `815:2036` */
+.race {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+}
+
+/* Full-width track — label lives here, fill grows inside */
+.raceTrack {
+  position: relative;
+  width: 100%;
+  height: 36px;
+  overflow: hidden;
+}
+
+/* The color slab that GSAP animates — never contains text */
+.raceBarFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  will-change: width;
+}
+
+.fillWorld {
+  background-color: var(--color-navy);
+}
+
+.fillYouUs {
+  background-color: var(--color-onglo-orange);
+}
+
+/* Label floats above the fill, never transformed */
+.raceBarLabel {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-12);
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-ivory);
+  pointer-events: none;
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+  .section {
+    padding: var(--spacing-5) var(--spacing-4);
+  }
+
+  .grid {
+    inset: 0 var(--spacing-4);
+  }
+
+  .headlineLine {
+    font-size: var(--font-size-heading-40);
+    letter-spacing: var(--letter-spacing-heading-40);
+  }
+
+  .logoRow {
+    flex-wrap: nowrap;
+  }
+
+  .logoCard {
+    width: 150px;
+    height: 100px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .section {
+    padding: var(--spacing-4) var(--spacing-3);
+  }
+
+  .inner {
+    gap: var(--spacing-5);
+    min-height: calc(100vh - var(--spacing-8));
+  }
+
+  .grid {
+    inset: 0 var(--spacing-3);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-body-14);
+  }
+
+  .headlineLine {
+    font-size: var(--font-size-heading-28);
+    letter-spacing: var(--letter-spacing-heading-28);
+  }
+
+  .logoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-2);
+  }
+
+  .logoRow,
+  .logoRowBottom {
+    display: contents;
+  }
+
+  .logoCard {
+    width: 100%;
+    height: calc(var(--spacing-10) + var(--spacing-1));
+  }
+
+  .raceTrack {
+    height: var(--spacing-4);
+  }
+
+  .raceBarLabel {
+    font-size: var(--font-size-body-12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition: none;
+  }
+
+  .ctaArrow {
+    transition: none;
+  }
+
+  .raceBarFill {
+    will-change: auto;
+  }
+}

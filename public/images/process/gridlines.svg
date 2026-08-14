@@ -1,0 +1,40 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 589 513" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Gridlines" opacity="0.1">
+<line id="END" opacity="0" y1="-0.5" x2="589" y2="-0.5" stroke="url(#paint0_linear_891_2076)"/>
+<line id="Gridline" y1="23.9286" x2="589" y2="23.9286" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_2" y1="48.3571" x2="589" y2="48.3571" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_3" y1="72.7857" x2="589" y2="72.7857" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_4" y1="97.2143" x2="589" y2="97.2143" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_5" y1="121.643" x2="589" y2="121.643" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_6" y1="146.071" x2="589" y2="146.071" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_7" y1="170.5" x2="589" y2="170.5" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_8" y1="194.929" x2="589" y2="194.929" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_9" y1="219.357" x2="589" y2="219.357" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_10" y1="243.786" x2="589" y2="243.786" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_11" y1="268.214" x2="589" y2="268.214" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_12" y1="292.643" x2="589" y2="292.643" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_13" y1="317.071" x2="589" y2="317.071" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_14" y1="341.5" x2="589" y2="341.5" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_15" y1="365.929" x2="589" y2="365.929" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_16" y1="390.357" x2="589" y2="390.357" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_17" y1="414.786" x2="589" y2="414.786" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_18" y1="439.214" x2="589" y2="439.214" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_19" y1="463.643" x2="589" y2="463.643" stroke="var(--stroke-0, #1F293A)"/>
+<line id="Gridline_20" y1="488.071" x2="589" y2="488.071" stroke="var(--stroke-0, #1F293A)"/>
+<line id="END_2" opacity="0" y1="512.5" x2="589" y2="512.5" stroke="url(#paint1_linear_891_2076)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_891_2076" x1="0" y1="0.5" x2="589" y2="0.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1F293A" stop-opacity="0"/>
+<stop offset="0.302885" stop-color="#1F293A"/>
+<stop offset="0.701923" stop-color="#1F293A"/>
+<stop offset="1" stop-color="#1F293A" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint1_linear_891_2076" x1="0" y1="513.5" x2="589" y2="513.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1F293A" stop-opacity="0"/>
+<stop offset="0.302885" stop-color="#1F293A"/>
+<stop offset="0.701923" stop-color="#1F293A"/>
+<stop offset="1" stop-color="#1F293A" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

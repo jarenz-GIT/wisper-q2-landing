@@ -1,0 +1,372 @@
+/* Case Study Preview — Figma 818:3835 (Wisper Refresh 2026) */
+
+/* ─── Local tokens ──────────────────────────────────────────────────────── */
+.section {
+  --cs-subtitle-color: color-mix(in srgb, var(--color-navy) 28%, var(--color-white));
+  --cs-card-radius: 15px;
+  --cs-overlay: color-mix(in srgb, var(--color-pure-black) 42%, transparent);
+  --cs-toggle-size: 35px;
+  --cs-knob-size: 25.82px;
+
+  width: 100%;
+  background-color: var(--color-ivory);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-6);
+  width: 100%;
+  max-width: 1178px;
+  margin-inline: auto;
+  padding: var(--spacing-9) var(--spacing-6) 100px;
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  align-items: flex-start;
+  width: 100%;
+}
+
+.subtitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cs-subtitle-color);
+}
+
+.headlineRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--spacing-4);
+  flex-wrap: nowrap;
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.headlineLine {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-typo-hanken-64);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1;
+  letter-spacing: calc(var(--letter-spacing-typo-hanken-64) * 1.5);
+  color: var(--color-pure-black);
+}
+
+/* ─── Before / After toggle ─────────────────────────────────────────────── */
+.beforeSwitch {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
+}
+
+.beforeLabel {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-pure-black);
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  width: 72.869px;
+  height: var(--cs-toggle-size);
+  padding: 4.643px;
+  border: 1.429px solid var(--color-navy);
+  border-radius: 47.424px;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.toggle:hover {
+  border-color: var(--color-onglo-orange);
+}
+
+.toggle:hover .toggleKnob,
+.toggle:focus-visible .toggleKnob {
+  background-color: var(--color-onglo-orange);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: var(--spacing-1);
+}
+
+.toggleOn {
+  border-color: var(--color-onglo-orange);
+  background-color: var(--color-onglo-orange);
+}
+
+.toggleKnob {
+  display: block;
+  width: var(--cs-knob-size);
+  height: var(--cs-knob-size);
+  border-radius: 50%;
+  background-color: var(--color-navy);
+  transition: background-color 0.25s ease;
+  flex-shrink: 0;
+}
+
+.toggleOn .toggleKnob {
+  background-color: var(--color-white);
+}
+
+.toggleOn:hover .toggleKnob,
+.toggleOn:focus-visible .toggleKnob {
+  background-color: var(--color-white);
+}
+
+/* ─── Card grid — desktop 3 cols × 2 rows ───────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+/* ─── Work card ─────────────────────────────────────────────────────────── */
+.card {
+  aspect-ratio: 528 / 450;
+  border-radius: var(--cs-card-radius);
+  overflow: hidden;
+  background-color: var(--color-navy);
+  transform-origin: 18% 50%;
+  will-change: transform;
+  transition: transform 0.3s ease;
+}
+
+.cardLink {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  padding: var(--spacing-4);
+  text-decoration: none;
+  outline-offset: 3px;
+}
+
+.cardLink:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+}
+
+/* Scale card slightly on hover */
+.card:hover {
+  transform: scale(1.015);
+}
+
+/* ─── Card media ────────────────────────────────────────────────────────── */
+.cardMedia {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--cs-card-radius);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cardImageLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.imageVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.imageHidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.imageCrossfade {
+  transition: opacity 0.45s ease;
+}
+
+.imageCrossfade.imageHidden {
+  visibility: visible;
+}
+
+.cardImage {
+  object-fit: cover;
+  border-radius: var(--cs-card-radius);
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--cs-overlay);
+  border-radius: var(--cs-card-radius);
+}
+
+/* ─── Card content ──────────────────────────────────────────────────────── */
+.cardContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  line-height: 1;
+}
+
+.cardCategory {
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-12);
+  font-weight: var(--font-weight-mono-regular);
+  letter-spacing: calc(var(--letter-spacing-body-12) * -2.4);
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-heading-32);
+  font-weight: var(--font-weight-sans-regular);
+  letter-spacing: var(--letter-spacing-heading-32);
+  color: var(--color-white);
+}
+
+/* ─── See more ──────────────────────────────────────────────────────────── */
+.seeMoreRow {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.seeMore {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  color: var(--color-onglo-orange);
+  transition: opacity 0.2s ease;
+}
+
+.seeMore:hover {
+  opacity: 0.75;
+}
+
+.seeMore:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: var(--spacing-1);
+}
+
+/* ─── Tablet — 2 cols × 3 rows ──────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .inner {
+    align-items: stretch;
+    padding: var(--spacing-8) var(--spacing-4) var(--spacing-9);
+  }
+
+  .headlineLine {
+    font-size: var(--font-size-heading-40);
+    letter-spacing: var(--letter-spacing-heading-40);
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-3);
+  }
+}
+
+/* ─── Mobile — 1 col × 6 rows, cards at half height ────────────────────── */
+@media (max-width: 767px) {
+  .inner {
+    align-items: stretch;
+    padding: var(--spacing-7) var(--spacing-3) var(--spacing-8);
+    gap: var(--spacing-5);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-body-14);
+  }
+
+  .headlineLine {
+    font-size: var(--font-size-heading-32);
+    letter-spacing: var(--letter-spacing-heading-32);
+  }
+
+  .beforeLabel {
+    font-size: var(--font-size-body-14);
+  }
+
+  .headlineRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-3);
+  }
+
+  /* Half the normal 528/450 height → 528/225 */
+  .card {
+    width: 100%;
+    aspect-ratio: 528 / 225;
+  }
+
+  .cardTitle {
+    font-size: var(--font-size-heading-28);
+    letter-spacing: var(--letter-spacing-heading-28);
+  }
+}
+
+/* ─── Reduced motion ────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+    will-change: auto;
+  }
+
+  .imageCrossfade {
+    transition: none;
+  }
+
+  .toggle,
+  .toggleKnob {
+    transition: none;
+  }
+
+  .seeMore {
+    transition: none;
+  }
+}

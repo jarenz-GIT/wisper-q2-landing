@@ -1,0 +1,148 @@
+/* BuildingInProgress — Figma 907:538 (Wisper Refresh 2026) */
+
+.section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-navy);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-pure-black) 42%, transparent) 0%,
+    color-mix(in srgb, var(--color-pure-black) 28%, transparent) 45%,
+    color-mix(in srgb, var(--color-pure-black) 48%, transparent) 100%
+  );
+}
+
+.media::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  mix-blend-mode: overlay;
+}
+
+.center {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: calc(50% + 25.5px);
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px var(--spacing-3) 10px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-onglo-orange);
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.homeBtn:active {
+  transform: translateY(1px);
+}
+
+.homeBtn:focus-visible {
+  outline: 2px solid var(--color-ivory);
+  outline-offset: var(--spacing-1);
+}
+
+.homeBtnLabel {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-style: italic;
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: calc(var(--letter-spacing-body-16) * 2);
+  text-transform: uppercase;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.homeBtnIcon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 12.728px;
+  height: 12.728px;
+}
+
+.homeBtnIconImage {
+  display: block;
+  transform: rotate(-135deg) scaleY(-1);
+}
+
+.status {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-weight: var(--font-weight-mono-regular);
+  line-height: normal;
+  letter-spacing: var(--letter-spacing-body-16);
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-ivory);
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 767px) {
+  .status {
+    bottom: 30px;
+    max-width: calc(100% - var(--spacing-6));
+    white-space: normal;
+  }
+
+  .homeBtn {
+    width: calc(100% - var(--spacing-6));
+    max-width: 320px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homeBtn {
+    transition: none;
+  }
+
+  .video {
+    display: none;
+  }
+}

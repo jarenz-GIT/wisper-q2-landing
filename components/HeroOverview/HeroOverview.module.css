@@ -1,0 +1,197 @@
+/* HeroOverview — Figma 790:2866 (Wisper Refresh 2026) */
+
+.section {
+  width: 100%;
+  background-color: var(--color-ivory);
+  padding: calc(95px + 10px) 10px 0;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-8);
+  width: 100%;
+  margin-inline: auto;
+  padding: var(--spacing-8) 0;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  align-items: center;
+  width: min(100%, 640px);
+  text-align: center;
+}
+
+.projectName {
+  margin: 0;
+  font-family: var(--font-family-specimen-serif);
+  font-style: italic;
+  font-size: clamp(56px, 8vw, 96px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-pure-black);
+}
+
+.description {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-pure-black);
+}
+
+.heroVisual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.heroImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1101 / 707;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--color-navy);
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.heroOverlay {
+  position: absolute;
+  left: clamp(16px, 4vw, 43px);
+  bottom: clamp(16px, 8vw, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: min(calc(100% - 32px), 683px);
+  pointer-events: none;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 0;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px 2px 4px;
+  border-radius: 10px;
+  font-family: var(--font-family-sans);
+  font-size: 10px;
+  font-weight: var(--font-weight-sans-regular);
+  line-height: normal;
+  white-space: nowrap;
+  color: var(--color-white);
+}
+
+.tagDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  flex-shrink: 0;
+}
+
+.tagBlue {
+  background-color: var(--color-tag-blue-beam);
+}
+
+.tagOrange {
+  background-color: var(--color-e5744b);
+}
+
+.tagGreen {
+  background-color: var(--color-tag-green-beam);
+  color: var(--color-navy);
+}
+
+.tagGreen .tagDot {
+  background-color: var(--color-navy);
+}
+
+.tagPurple {
+  background-color: var(--color-tag-purp-beam);
+}
+
+.overlayTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-block: 15px;
+  color: var(--color-ivory);
+}
+
+.overlayName {
+  margin: 0;
+  font-family: var(--font-family-specimen-serif);
+  font-style: italic;
+  font-size: clamp(48px, 7vw, 82px);
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+}
+
+.overlayTagline {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: 18px;
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 1023px) {
+  .section {
+    padding-top: var(--spacing-12);
+  }
+
+  .inner {
+    gap: var(--spacing-6);
+    padding: var(--spacing-6) 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: var(--spacing-10) 0 0;
+  }
+
+  .inner {
+    padding: var(--spacing-5) 24px;
+    gap: var(--spacing-5);
+  }
+
+  .heroOverlay {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    margin-top: calc(var(--spacing-3) * -1);
+    padding: var(--spacing-3);
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      color-mix(in srgb, var(--color-navy) 88%, transparent) 28%
+    );
+  }
+
+  .overlayTitle {
+    padding-block: var(--spacing-2) 0;
+  }
+}

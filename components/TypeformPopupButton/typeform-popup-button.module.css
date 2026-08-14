@@ -1,0 +1,11 @@
+/* Reset Typeform PopupButton defaults so passed-in module classes control appearance */
+.button {
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+}

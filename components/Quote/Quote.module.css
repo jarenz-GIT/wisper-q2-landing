@@ -1,0 +1,55 @@
+/* Quote — Figma 790:2951 (Wisper Refresh 2026) */
+
+.section {
+  width: 100%;
+  background-color: var(--color-ivory);
+  padding: var(--spacing-8) 10px 0;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--spacing-6);
+}
+
+.quoteIcon {
+  width: 71px;
+  height: 71px;
+  flex-shrink: 0;
+}
+
+.quoteBlock {
+  margin: 0;
+  max-width: 1000px;
+}
+
+.quoteText {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: clamp(28px, 5vw, 64px);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--color-pure-black);
+  white-space: pre-line;
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: var(--spacing-6) 0 0;
+  }
+
+  .inner {
+    padding-inline: 24px;
+  }
+
+  .quoteIcon {
+    width: 52px;
+    height: 52px;
+  }
+}

@@ -1,0 +1,6 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="burgermenu">
+<rect width="30" height="30" rx="6" fill="var(--fill-0, #FF914D)"/>
+<path id="Vector" d="M8 20.5H22M8 15H22M8 9.5H22" stroke="var(--stroke-0, #FCFCFC)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

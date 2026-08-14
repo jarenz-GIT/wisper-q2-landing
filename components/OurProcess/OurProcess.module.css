@@ -1,0 +1,401 @@
+/* OurProcess — Figma 891:1888 (Wisper Refresh 2026) */
+
+.section {
+  width: 100%;
+  background-color: var(--color-ivory);
+}
+
+.inner {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: var(--spacing-8) var(--spacing-8);
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-8);
+}
+
+.labelWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  flex-shrink: 0;
+  width: fit-content;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-16);
+  font-weight: var(--font-weight-mono-regular);
+  line-height: normal;
+  letter-spacing: -0.16px;
+  text-transform: uppercase;
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+
+.labelTick {
+  display: inline-flex;
+  align-items: center;
+  transform: rotate(6deg);
+}
+
+.labelDivider {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid var(--color-neutral-400);
+  overflow: hidden;
+}
+
+.headline {
+  margin: 0;
+  max-width: 536px;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-typo-hanken-64);
+  font-weight: var(--font-weight-sans-regular);
+  line-height: 0.9;
+  letter-spacing: -2.56px;
+  color: var(--color-navy);
+}
+
+.headlineAccent {
+  font-family: var(--font-family-specimen-serif);
+  font-style: italic;
+  color: var(--color-onglo-orange);
+}
+
+/* ─── Body ───────────────────────────────────────────────────────────────── */
+.body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+/* ─── Step list ──────────────────────────────────────────────────────────── */
+.stepList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 0 0 41%;
+  max-width: 456px;
+  min-width: 220px;
+}
+
+.stepList > li {
+  width: 100%;
+}
+
+.stepRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 78px;
+  padding: 0 11px;
+  border: none;
+  border-radius: 11px;
+  background-color: var(--color-neutral-100);
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  text-align: left;
+}
+
+.stepRow:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: 2px;
+}
+
+.stepRowActive {
+  background-color: var(--color-navy);
+}
+
+.stepLeft {
+  display: flex;
+  align-items: center;
+  gap: 47px;
+}
+
+.stepNum {
+  font-family: var(--font-family-mono);
+  font-size: 14.86px;
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: -0.59px;
+  color: var(--color-onglo-orange);
+  flex-shrink: 0;
+}
+
+.stepName {
+  font-family: var(--font-family-specimen-serif);
+  font-style: italic;
+  font-size: 33.4px;
+  line-height: 1;
+  letter-spacing: -1.34px;
+  color: var(--color-navy);
+  transition: color 0.25s ease;
+}
+
+.stepRowActive .stepName {
+  color: var(--color-ivory);
+}
+
+.stepTime {
+  font-family: var(--font-family-mono);
+  font-size: 14.86px;
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: -0.59px;
+  text-transform: uppercase;
+  color: var(--color-neutral-500);
+}
+
+/* ─── Sketchpad wrapper ──────────────────────────────────────────────────── */
+.sketchpadWrap {
+  position: relative;
+  flex: 1;
+  max-width: 589px;
+  width: 100%;
+  aspect-ratio: 589 / 515;
+  border: 2px solid var(--color-neutral-300);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: var(--color-ivory);
+  container-type: inline-size;
+}
+
+.sketchpadWrapImage {
+  aspect-ratio: 1024 / 886;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  background-color: transparent;
+  cursor: none;
+}
+
+.sketchpadStage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  animation: sketchFadeIn 0.35s ease;
+}
+
+@keyframes sketchFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.processImageFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 14px rgba(31, 41, 58, 0.14);
+  overflow: hidden;
+}
+
+.processImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Animated cursor overlay — moves between step anchors */
+.cursorOverlay {
+  position: absolute;
+  z-index: 30;
+  width: 6.002cqw;
+  height: 6.864cqh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  will-change: left, top, transform;
+}
+
+.cursorOverlayRotate {
+  flex: none;
+  transform: rotate(-45deg);
+}
+
+.cursorOverlayInner {
+  position: relative;
+  width: 4.245cqw;
+  height: 4.245cqw;
+}
+
+.cursorOverlayImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* ─── Tablet ─────────────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .inner {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+
+  .header {
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-6);
+  }
+
+  .labelWrap {
+    width: fit-content;
+  }
+
+  .headline {
+    font-size: var(--font-size-heading-48);
+    letter-spacing: var(--letter-spacing-heading-48);
+    line-height: 1;
+  }
+
+  .body {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-4);
+  }
+
+  .stepList {
+    order: 2;
+    flex: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-1);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0 0 4px;
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+
+  .stepList > li {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .sketchpadWrap {
+    order: 1;
+    flex: none;
+    max-width: 520px;
+  }
+
+  .stepRow {
+    justify-content: center;
+    width: auto;
+    min-width: 88px;
+    height: 56px;
+    padding: 0 12px;
+  }
+
+  .stepLeft {
+    gap: var(--spacing-1);
+  }
+
+  .stepNum {
+    font-size: 12px;
+  }
+
+  .stepName {
+    font-size: 20px;
+    letter-spacing: -0.6px;
+  }
+
+  .stepTime {
+    display: none;
+  }
+}
+
+/* ─── Mobile ─────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .inner {
+    padding: var(--spacing-5) var(--spacing-3);
+  }
+
+  .header {
+    flex-direction: column;
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-5);
+  }
+
+  .headline {
+    font-size: var(--font-size-heading-40);
+    letter-spacing: var(--letter-spacing-heading-40);
+  }
+
+  .stepList {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-1);
+    max-width: none;
+    overflow-x: visible;
+    padding-bottom: 0;
+    scroll-snap-type: none;
+  }
+
+  .stepList > li {
+    min-width: 0;
+  }
+
+  .stepRow {
+    width: 100%;
+    min-width: 0;
+    height: 52px;
+  }
+
+  .stepName {
+    font-size: 18px;
+    letter-spacing: -0.5px;
+  }
+
+  .stepNum {
+    font-size: 11px;
+  }
+
+  .stepLeft {
+    gap: var(--spacing-2);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .sketchpadWrapImage {
+    cursor: auto;
+  }
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .stepRow,
+  .stepName {
+    transition: none;
+  }
+
+  .sketchpadStage {
+    animation: none;
+  }
+}

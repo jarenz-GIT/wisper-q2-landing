@@ -1,0 +1,172 @@
+/* Moodboard — Figma 790:2955 / 790:2968 (Wisper Refresh 2026) */
+
+.section {
+  width: 100%;
+  background-color: var(--color-ivory);
+  padding: 61px 10px var(--spacing-10);
+}
+
+.headerWrap {
+  width: 100%;
+  margin-inline: auto;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  width: 100%;
+  padding-inline: var(--spacing-8);
+}
+
+.headline {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-pure-black);
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  min-height: 459px;
+  margin: var(--spacing-8) auto 0;
+  overflow: hidden;
+  background-color: var(--color-ivory);
+}
+
+.gridBg {
+  position: absolute;
+  inset: -249px 0 0;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.gridImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.stageInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 459px;
+  padding: var(--spacing-6) var(--spacing-8);
+}
+
+.beforePanel {
+  position: relative;
+  width: min(100%, 900px);
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--color-navy) 16%, transparent);
+}
+
+.beforeImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.collage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.collageItem {
+  flex: 0 1 auto;
+}
+
+.collageItem:nth-child(1) {
+  transform: rotate(-2deg);
+}
+
+.collageItem:nth-child(2) {
+  transform: rotate(1.5deg) translateY(12px);
+}
+
+.collageItem:nth-child(3) {
+  transform: rotate(-1deg);
+}
+
+.collageItem:nth-child(4) {
+  transform: rotate(2deg) translateY(-8px);
+}
+
+.collageMedia {
+  position: relative;
+  width: clamp(180px, 22vw, 254px);
+  aspect-ratio: 254 / 210;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--color-navy) 14%, transparent);
+}
+
+.collageImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 1023px) {
+  .titleRow,
+  .stageInner {
+    padding-inline: var(--spacing-4);
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: var(--spacing-6) 0 var(--spacing-8);
+  }
+
+  .titleRow {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-inline: 24px;
+  }
+
+  .stage {
+    min-height: 360px;
+    margin-top: var(--spacing-5);
+  }
+
+  .stageInner {
+    min-height: 360px;
+    padding: var(--spacing-4) 24px;
+  }
+
+  .collage {
+    gap: var(--spacing-3);
+  }
+
+  .collageItem {
+    transform: none;
+  }
+
+  .collageMedia {
+    width: min(100%, 280px);
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collageItem {
+    transform: none;
+  }
+}

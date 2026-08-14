@@ -1,0 +1,93 @@
+/* BeforeAfter — Figma 790:2937 (Wisper Refresh 2026) */
+
+.section {
+  width: 100%;
+  background-color: var(--color-ivory);
+  padding: 61px 10px 0;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-8);
+  width: 100%;
+  margin-inline: auto;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  width: 100%;
+  padding-inline: var(--spacing-8);
+}
+
+.headline {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-pure-black);
+}
+
+.headlineLine {
+  display: block;
+}
+
+.mediaWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1084 / 989;
+  overflow: hidden;
+  background-color: color-mix(in srgb, var(--color-navy) 6%, var(--color-white));
+}
+
+.mediaImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: color-mix(in srgb, var(--color-navy) 10%, var(--color-white));
+}
+
+@media (max-width: 1023px) {
+  .titleRow {
+    padding-inline: var(--spacing-4);
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding-top: var(--spacing-6);
+  }
+
+  .titleRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+    padding-inline: 24px;
+  }
+
+  .inner {
+    gap: var(--spacing-5);
+  }
+
+  .mediaWrap {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mediaImage {
+    transition: none;
+  }
+}

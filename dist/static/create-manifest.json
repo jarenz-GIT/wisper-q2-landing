@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "createdAt": "2026-06-09T23:33:12.308Z",
+  "workspaces": [
+    {
+      "name": "wisper-studios",
+      "title": "Wisper Studios",
+      "basePath": "/",
+      "projectId": "9uv9qcbo",
+      "dataset": "production",
+      "icon": "<img src=\"/images/brand/wisper-studio-icon.png\" alt=\"Wisper Studios\" style=\"display:block;width:1.5em;height:1.5em;object-fit:contain\">",
+      "mediaLibrary": {
+        "enabled": false
+      },
+      "schema": "31d0874b.create-schema.json",
+      "tools": "e523f8b0.create-tools.json"
+    }
+  ]
+}

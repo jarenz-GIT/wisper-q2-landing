@@ -1,0 +1,79 @@
+/* Shared before/after toggle — Figma 790:2940 / 818:3843 */
+
+.beforeSwitch {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
+}
+
+.beforeLabel {
+  font-family: var(--font-family-mono);
+  font-size: 20px;
+  font-weight: var(--font-weight-mono-regular);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-pure-black);
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  width: 72.869px;
+  height: 35px;
+  padding: 4.643px;
+  border: 1.429px solid var(--color-navy);
+  border-radius: 47.424px;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.toggle:hover {
+  border-color: var(--color-onglo-orange);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: var(--spacing-1);
+}
+
+.toggleOn {
+  background-color: var(--color-navy);
+  justify-content: flex-end;
+}
+
+.toggleKnob {
+  display: block;
+  width: 25.82px;
+  height: 25.82px;
+  border-radius: 50%;
+  background-color: var(--color-navy);
+  transition: background-color 0.25s ease;
+  flex-shrink: 0;
+}
+
+.toggleOn .toggleKnob {
+  background-color: var(--color-ivory);
+}
+
+@media (max-width: 767px) {
+  .beforeLabel {
+    font-size: var(--font-size-body-14);
+  }
+
+  .beforeSwitch {
+    gap: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle,
+  .toggleKnob {
+    transition: none;
+  }
+}

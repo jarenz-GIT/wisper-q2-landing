@@ -1,0 +1,760 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Primary project name (e.g. 'ShipNomad').",
+        "name": "clientName",
+        "type": "string",
+        "title": "Project Name",
+        "fieldset": "listing"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Short descriptor on work cards (e.g. '3PL Rebrand').",
+        "name": "projectTitle",
+        "type": "string",
+        "title": "Project Subtitle",
+        "fieldset": "listing"
+      },
+      {
+        "options": {
+          "source": "clientName",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "URL path for /work/[slug]. Auto-generated from project name.",
+        "name": "slug",
+        "type": "slug",
+        "fieldset": "listing"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "After state — default on cards and detail before/after section.",
+        "fields": [
+          {
+            "description": "Short description for screen readers.",
+            "name": "alt",
+            "type": "string",
+            "title": "Alt text"
+          }
+        ],
+        "name": "afterImage",
+        "type": "image",
+        "fieldset": "listing"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Before state — cards toggle + detail before/after section.",
+        "fields": [
+          {
+            "description": "Short description for screen readers.",
+            "name": "alt",
+            "type": "string",
+            "title": "Alt text"
+          }
+        ],
+        "name": "beforeImage",
+        "type": "image",
+        "fieldset": "listing"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Brand Identity",
+              "value": "Brand Identity"
+            },
+            {
+              "title": "Packaging",
+              "value": "Packaging"
+            },
+            {
+              "title": "Website",
+              "value": "Website"
+            },
+            {
+              "title": "Photography",
+              "value": "Photography"
+            },
+            {
+              "title": "Videography",
+              "value": "Videography"
+            },
+            {
+              "title": "Social Media",
+              "value": "Social Media"
+            },
+            {
+              "title": "Paid Ads",
+              "value": "Paid Ads"
+            },
+            {
+              "title": "Launch Campaign",
+              "value": "Launch Campaign"
+            }
+          ]
+        },
+        "description": "Tag pills on the detail hero and services line on work cards.",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "services",
+        "type": "array",
+        "title": "Service Tags",
+        "fieldset": "listing"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Navy",
+              "value": "navy"
+            },
+            {
+              "title": "Pelli Pink",
+              "value": "pelli-pink"
+            },
+            {
+              "title": "Gooper Green",
+              "value": "gooper-green"
+            },
+            {
+              "title": "Yumazo Yellow",
+              "value": "yumazo-yellow"
+            },
+            {
+              "title": "Onglo Orange",
+              "value": "onglo-orange"
+            },
+            {
+              "title": "Cotton Blue",
+              "value": "cotton-blue"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "navy",
+        "description": "Brand color behind the case study image on the Work grid.",
+        "name": "cardColor",
+        "type": "string",
+        "title": "Card Background Color",
+        "fieldset": "listing"
+      },
+      {
+        "initialValue": false,
+        "description": "Show this case study in the homepage grid.",
+        "name": "featured",
+        "type": "boolean",
+        "title": "Featured on Homepage",
+        "fieldset": "listing"
+      },
+      {
+        "description": "Lower numbers appear first. Homepage grid shows up to 6.",
+        "name": "order",
+        "type": "number",
+        "title": "Display Order",
+        "fieldset": "listing"
+      },
+      {
+        "initialValue": false,
+        "description": "When enabled, /work/[slug] shows the full case study page instead of Building In Progress.",
+        "name": "detailReady",
+        "type": "boolean",
+        "title": "Publish Detail Page",
+        "fieldset": "detail"
+      },
+      {
+        "rows": 4,
+        "description": "Intro copy below the project name on the detail page.",
+        "name": "description",
+        "type": "text",
+        "title": "Short Description",
+        "fieldset": "detail"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Full-width hero visual on the detail page.",
+        "fields": [
+          {
+            "description": "Short description for screen readers.",
+            "name": "alt",
+            "type": "string",
+            "title": "Alt text"
+          }
+        ],
+        "name": "heroImage",
+        "type": "image",
+        "fieldset": "detail"
+      },
+      {
+        "description": "Line overlaid on the hero image (below the tag pills).",
+        "name": "heroTagline",
+        "type": "string",
+        "fieldset": "detail"
+      },
+      {
+        "fields": [
+          {
+            "rows": 5,
+            "name": "text",
+            "type": "text",
+            "title": "Quote Text"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "type": "string",
+            "title": "Role / Title"
+          }
+        ],
+        "name": "quote",
+        "type": "object",
+        "fieldset": "detail"
+      },
+      {
+        "initialValue": true,
+        "description": "Toggle visibility of the quote block on the detail page.",
+        "name": "showQuote",
+        "type": "boolean",
+        "title": "Show Quote Section",
+        "fieldset": "detail"
+      },
+      {
+        "description": "Visual direction images for the moodboard gallery.",
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "fields": [
+              {
+                "description": "Short description for screen readers.",
+                "name": "alt",
+                "type": "string",
+                "title": "Alt text"
+              }
+            ],
+            "type": "image"
+          }
+        ],
+        "name": "moodboard",
+        "type": "array",
+        "fieldset": "detail"
+      },
+      {
+        "initialValue": true,
+        "description": "Toggle visibility of the moodboard gallery on the detail page.",
+        "name": "showMoodboard",
+        "type": "boolean",
+        "title": "Show Moodboard Section",
+        "fieldset": "detail"
+      }
+    ],
+    "fieldsets": [
+      {
+        "name": "listing",
+        "title": "Work Grid & Homepage Card",
+        "options": {
+          "collapsible": true,
+          "collapsed": false
+        }
+      },
+      {
+        "name": "detail",
+        "title": "Detail Page",
+        "options": {
+          "collapsible": true,
+          "collapsed": false
+        }
+      }
+    ],
+    "name": "caseStudy",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Ecommerce",
+              "value": "ecommerce"
+            },
+            {
+              "title": "Content Creators",
+              "value": "content-creators"
+            },
+            {
+              "title": "Startups",
+              "value": "startups"
+            }
+          ],
+          "layout": "radio"
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "ecommerce",
+                  "content-creators",
+                  "startups"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Which customer segment this content appears for.",
+        "name": "segment",
+        "type": "string",
+        "title": "Customer Segment"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "timelineImage",
+        "type": "image"
+      },
+      {
+        "rows": 4,
+        "name": "quoteText",
+        "type": "text",
+        "title": "Quote"
+      },
+      {
+        "name": "quoteName",
+        "type": "string",
+        "title": "Name of Speaker"
+      },
+      {
+        "name": "quoteRole",
+        "type": "string",
+        "title": "Role of Speaker"
+      }
+    ],
+    "name": "customerType",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "question",
+        "type": "string"
+      },
+      {
+        "rows": 5,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "answer",
+        "type": "text"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Controls display order and the numbered tag shown in the accordion (e.g. 1 → 01). Lower numbers appear first.",
+        "name": "order",
+        "type": "number",
+        "title": "Question Number / Order"
+      }
+    ],
+    "name": "faq",
+    "type": "document",
+    "title": "FAQ"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Avatar or icon shown at the top of the package card.",
+        "fields": [
+          {
+            "description": "Short description for screen readers.",
+            "name": "alt",
+            "type": "string",
+            "title": "Alt text"
+          }
+        ],
+        "name": "packageIcon",
+        "type": "image",
+        "title": "Package Icon Image"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Display name for the tier (e.g. \"The Jackie\").",
+        "name": "packageName",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Price label as shown on the card (e.g. \"$4,000\", \"$17,500+\").",
+        "name": "price",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Lines describing what is included in this package. Mark items as not included to gray them out and show a minus icon.",
+        "of": [
+          {
+            "fields": [
+              {
+                "rows": 3,
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "text",
+                "type": "text",
+                "title": "Bullet text"
+              },
+              {
+                "initialValue": false,
+                "description": "When enabled, the line is grayed out and shows a gray minus icon on the pricing card.",
+                "name": "grayedOut",
+                "type": "boolean",
+                "title": "Not included"
+              },
+              {
+                "options": {
+                  "list": [
+                    {
+                      "title": "Checkmark",
+                      "value": "check"
+                    },
+                    {
+                      "title": "Plus",
+                      "value": "plus"
+                    }
+                  ],
+                  "layout": "radio"
+                },
+                "initialValue": "check",
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "valid",
+                        "constraint": [
+                          "check",
+                          "plus"
+                        ]
+                      },
+                      {
+                        "flag": "custom"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "description": "Icon when this item is included. Not used when “Not included” is enabled (minus is shown instead).",
+                "hidden": "conditional",
+                "name": "includedIcon",
+                "type": "string",
+                "title": "Bullet icon"
+              }
+            ],
+            "type": "object",
+            "name": "bulletPoint",
+            "title": "Bullet point"
+          }
+        ],
+        "name": "bulletPoints",
+        "type": "array",
+        "title": "What's included"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Lower numbers appear first (left to right on the pricing grid).",
+        "name": "order",
+        "type": "number",
+        "title": "Package order"
+      },
+      {
+        "initialValue": false,
+        "description": "When enabled, this card uses the highlighted “Recommended” treatment on the pricing page.",
+        "name": "recommended",
+        "type": "boolean",
+        "title": "Recommended package"
+      }
+    ],
+    "name": "pricingPackage",
+    "type": "document",
+    "title": "Pricing Packages"
+  },
+  {
+    "initialValue": {
+      "contactTypeformUrl": "https://form.typeform.com/to/b8s1YVtI",
+      "tabTitle": "Wisper Studios | All-In-One Branding Studios for Creators & Brands",
+      "searchDescription": "Wisper Studios builds all-in-one brand systems for creators and lifestyle brands, spanning identity, websites, and content."
+    },
+    "fields": [
+      {
+        "initialValue": "https://form.typeform.com/to/b8s1YVtI",
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Full link to the Wisper contact Typeform (e.g. https://form.typeform.com/to/b8s1YVtI). Used by Contact Us and CTA buttons site-wide.",
+        "name": "contactTypeformUrl",
+        "type": "url",
+        "title": "Contact Typeform URL",
+        "fieldset": "contact"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Small icon shown in browser tabs and bookmarks. Use a square image for best results.",
+        "name": "favicon",
+        "type": "image",
+        "fieldset": "seo"
+      },
+      {
+        "initialValue": "Wisper Studios | All-In-One Branding Studios for Creators & Brands",
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 70
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Default browser tab title and search result title for the site.",
+        "name": "tabTitle",
+        "type": "string",
+        "fieldset": "seo"
+      },
+      {
+        "rows": 3,
+        "initialValue": "Wisper Studios builds all-in-one brand systems for creators and lifestyle brands, spanning identity, websites, and content.",
+        "description": "Meta description shown by search engines and link previews when available.",
+        "name": "searchDescription",
+        "type": "text",
+        "title": "Search Engine Description",
+        "fieldset": "seo"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Image used for social/link previews and search result previews where supported.",
+        "fields": [
+          {
+            "description": "Short description for screen readers and previews.",
+            "name": "alt",
+            "type": "string",
+            "title": "Alt text"
+          }
+        ],
+        "name": "websitePreviewImage",
+        "type": "image",
+        "fieldset": "seo"
+      }
+    ],
+    "fieldsets": [
+      {
+        "name": "contact",
+        "options": {
+          "collapsible": true,
+          "collapsed": false
+        }
+      },
+      {
+        "name": "seo",
+        "title": "Browser & Search Preview",
+        "options": {
+          "collapsible": true,
+          "collapsed": false
+        }
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document"
+  }
+]

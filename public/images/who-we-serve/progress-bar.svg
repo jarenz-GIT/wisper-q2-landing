@@ -1,0 +1,6 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 1104.52 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Progress Bar">
+<line id="Remaining" x1="2.02024" y1="1.5" x2="1103.02" y2="1.5" stroke="var(--stroke-0, #BABABA)" stroke-width="3" stroke-linecap="round"/>
+<line id="Progress" x1="1.5" y1="-1.5" x2="529.612" y2="-1.5" transform="matrix(1 0 0.301956 0.953322 0.52024 3)" stroke="var(--stroke-0, #FF914D)" stroke-width="3" stroke-linecap="round"/>
+</g>
+</svg>

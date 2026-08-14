@@ -1,0 +1,48 @@
+# Wisper Studios — website refresh
+
+## Project
+- Client: Wisper Studios (creative studio).
+- USP: Wisper Studios is the brand-building studio that creates a system — identity, website, and content — for lifestyle and cultural brands in the CPG space ready to scale.We bridge the gap between "DIY" and "Premium Agency" by providing the strategic rigor of a large studio with the agility and personal touch of a dedicated partner.
+- Who we help: We have 3 key segments that we focus on which are CPG brands, Content Creators Going to eCommerce, and Startups. All under the umbrella of lifestyle
+- What problem we are helping solve:Most growing lifestyle and CPG brands hit a wall. They've built something real- a product, a following, an idea worth believing in -but their brand hasn't kept up. Their Instagram looks different to their website. Their website doesn't reflect who they actually are. Their content goes out without a strategy behind it.
+- How WE Help them Solve It: Wisper builds the complete brand system - identity, website, and content - under one roof, specifically for cultural and lifestyle brands that are ready to grow up without losing what makes them interesting. We start with who you are, build a brand identity that holds across every surface, translate that into a website that converts, and then create the content that fills it with life month after month. One studio, one vision, no briefing three different agencies and hoping it all joins up.They know they've outgrown Canva and DIY, but a big agency feels out of reach and out of touch. The result is a brand that looks fragmented, loses trust before it earns it, and leaves money on the table every single day.
+- What Makes US Different to the Competition:Most agencies do one thing.
+Social media agencies can't build your brand. Branding studios don't touch your content. Web designers don't think about what happens after launch. And UGC creators give you videos with no world for them to live in. Wisper is different because we treat your brand as a system, not a set of deliverables - and because we work exclusively in the cultural and lifestyle space, we don't need to be briefed on your world. We already live in it. You get the strategic depth of a big agency, the creative taste of a boutique studio, and a team that's as invested in your brand as you are.
+- Purpose: refresh the current wisper website to be more business oriented to the USP and all new updated business information
+
+## Stack (authoritative)
+- **Framework:** Next.js 14 (App Router), **JavaScript only** (no TypeScript unless the team explicitly migrates).
+- **Styling:** CSS Modules (`.module.css`) co-located with components or routes. Do not introduce Tailwind or CSS-in-JS libraries unless the team asks.
+- **Motion:** GSAP for animation when needed.
+- **Content:** Sanity as CMS / content backend. Studio config and schemas live under `sanity/`; app-side queries and client helpers under `lib/` (e.g. Sanity client, GROQ). Use `next-sanity` and official Sanity patterns for Next.js App Router. This repo pins **`next-sanity` to v9.x** because it matches **Next.js 14** peer requirements; before upgrading `next-sanity` past v9, confirm the target version supports your Next major (newer `next-sanity` majors may require Next 15+).
+- **Hosting:** Vercel. Prefer environment variables for Sanity project ID, dataset, and API tokens; never commit secrets.
+
+## Repository layout
+- `app/` — App Router routes, layouts, `globals.css`, route-level CSS modules.
+- `components/` — shared UI (compose pages from small components).
+- `lib/` — utilities, Sanity client, non-UI modules.
+- `public/` — static assets served as-is.
+- `sanity/` — Sanity Studio and schema definitions (schemas often under `sanity/schemas/`).
+
+## Conventions
+- Prefer `@/` import alias (see `jsconfig.json`) for imports from the project root.
+- Keep pages thin; move reusable UI and data logic into `components/` and `lib/`.
+- When adding Sanity: define schemas in `sanity/`, fetch in Server Components or route handlers where possible, and type content shapes in JSDoc if helpful.
+- When adding GSAP: respect reduced-motion preferences where appropriate; avoid layout thrashing (batch reads/writes).
+
+## Design tokens (Wisper Design System — Figma)
+- **Source file:** `https://www.figma.com/design/9ifnbgihcfs0N2uw7plpkw/Wisper-s-Design-System--Figma-File-`
+- **Implementation:** `app/globals.css` and `lib/tokens.js` (values read from Figma REST API: nodes `12:379`, `12:22`, `284:2`, `288:137`, `12:441`, plus brand frames for extra fills).
+- **Colors (`--color-*`):** Named swatches from **Color System** (`12:441`): white `#fcfcfc`, ivory `#faf9f5`, pelli pink `#f5b5ae`, onglo orange `#ff914d`, pumpkin ninja `#c96e49`, yumazo yellow `#f6cb43`, gooper green `#8b9a6e`, briglet blue `#6391d3`, cotton blue `#a9c2dd`, navy `#1f293a`, tag beams `#3276ff` / `#d9ffb3` / `#8a38f5`. Additional documented fills: copy label `#1c1c1c`, pure black `#000000`, frame fill `#e5744b` on brand/language frames (`157:23`, `157:43`, `157:85`, `157:7`, `12:550`).
+- **Typography:** **Hanken Grotesk** (body 12/14/16, heading 20–48 bold, logo wordmarks weights 400/900), **DM Mono** (section labels / glyph strip / title strip in `12:22` and logo labels), **Times New Roman** and **Roboto** (“Rationale” in `284:2`) as in Figma. Exact `font-size`, `line-height`, and `letter-spacing` tokens mirror the API output in `globals.css`.
+- **Spacing:** `--spacing-1` = 8px … `--spacing-12` = 96px (8px grid).
+- **Radius:** `--radius-sm` = 12px, `--radius-lg` = 24px only.
+
+## Brand (copy, prompts, decisions)
+- **Canonical source:** `lib/brand.js` — strings transcribed from Figma frames **Brand Purpose** (`157:7`, `12:550`), **Brand Strategy** (`157:43`, `157:23` personality pillars), and **Language System** (`157:85` voice + personality lines). Use that file for tone; do not contradict quoted lines when writing marketing copy.
+- **Voice / personality cues:** Gracefully bold; intentionally playful; quietly confident; professionally playful; deliberately uncanny; celebrity reference “A$AP Rocky and Zendaya” (from `157:23`). Values → offerings narrative under `brand.strategy`.
+- **Project** section above remains business-context positioning; when it conflicts with Figma language, prefer **`lib/brand.js`** for customer-facing brand voice.
+
+## What not to do unless asked
+- Do not scaffold full marketing pages, heavy visual design, or placeholder “lorem” sections beyond minimal dev placeholders.
+- Do not add extra UI frameworks or global CSS methodologies unless requested.
