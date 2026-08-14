@@ -1,7 +1,5 @@
 import Link from "next/link";
 
-import Footer from "@/components/Footer";
-
 import styles from "./terms.module.css";
 
 export const metadata = {
@@ -320,7 +318,7 @@ function isSubClause(clause) {
 export default function TermsPage() {
   return (
     <>
-      <main className={styles["terms-page"]}>
+      <main id="main" className={styles["terms-page"]}>
         <div className={styles["terms-shell"]}>
           <Link href="/" className={styles["back-link"]}>
             <span aria-hidden="true" className={styles["back-link-icon"]}>
@@ -424,7 +422,6 @@ export default function TermsPage() {
           </article>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

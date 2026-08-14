@@ -1,0 +1,411 @@
+.main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-4) var(--spacing-8);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--spacing-4);
+  padding: var(--spacing-8) 0 var(--spacing-10);
+}
+
+.heroCopy {
+  max-width: 920px;
+}
+
+.headline {
+  margin: 0;
+  color: var(--color-navy);
+  font-size: clamp(2.25rem, 4.6vw, 4.25rem);
+  font-weight: var(--font-weight-sans-bold);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.subhead {
+  max-width: 34rem;
+  margin: var(--spacing-4) 0 0;
+  color: var(--color-navy-soft);
+  font-size: var(--font-size-heading-20);
+  font-weight: var(--font-weight-sans-regular);
+  letter-spacing: var(--letter-spacing-heading-20);
+  line-height: var(--line-height-heading-20);
+}
+
+.heroCta,
+.calendlyButton,
+.linkedinButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-1);
+  width: fit-content;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-14);
+  font-style: italic;
+  font-weight: var(--font-weight-sans-bold);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.heroCta {
+  margin-top: 0.35rem;
+  background-color: var(--color-onglo-orange);
+  color: var(--color-white);
+}
+
+.heroCta:hover,
+.calendlyButton:hover,
+.linkedinButton:hover,
+.socialTile:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.97);
+}
+
+.arrow {
+  width: 14px;
+  height: 14px;
+}
+
+.featured,
+.experience,
+.infoCard {
+  scroll-margin-top: 88px;
+}
+
+.featured {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.featuredHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+}
+
+.sectionTitle,
+.cardTitle {
+  margin: 0;
+  color: var(--color-navy);
+  font-size: var(--font-size-heading-24);
+  font-weight: var(--font-weight-sans-bold);
+  letter-spacing: var(--letter-spacing-heading-24);
+  line-height: var(--line-height-heading-24);
+}
+
+.lockNote {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-neutral-500);
+  font-size: var(--font-size-body-14);
+  letter-spacing: var(--letter-spacing-body-14);
+  line-height: var(--line-height-body-14);
+  text-decoration: none;
+}
+
+.lockNote:hover {
+  color: var(--color-navy);
+}
+
+.lockIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.launchGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.launchCard {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 11;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-neutral-300);
+}
+
+.launchImage {
+  object-fit: cover;
+}
+
+.shortageBadge {
+  position: absolute;
+  top: var(--spacing-3);
+  left: var(--spacing-3);
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  background-color: rgb(252 252 252 / 92%);
+  color: var(--color-navy);
+  font-size: var(--font-size-body-12);
+  font-weight: var(--font-weight-sans-bold);
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
+.raiseOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: end;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background: linear-gradient(180deg, transparent 35%, rgb(0 0 0 / 55%) 100%);
+  color: var(--color-white);
+}
+
+.raiseAmount {
+  margin: 0;
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  font-weight: var(--font-weight-sans-bold);
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+}
+
+.raiseLogos {
+  display: flex;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.raiseLogos li {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background-color: rgb(252 252 252 / 18%);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-sans-bold);
+}
+
+.raiseCaption {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: var(--font-size-body-12);
+  letter-spacing: var(--letter-spacing-body-12);
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-5);
+  padding: var(--spacing-10) 0 var(--spacing-8);
+  text-align: center;
+}
+
+.experienceStatement {
+  max-width: 46rem;
+  margin: 0;
+  color: var(--color-navy);
+  font-size: clamp(1.5rem, 2.6vw, 2.15rem);
+  font-weight: var(--font-weight-sans-bold);
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.highlight {
+  white-space: nowrap;
+}
+
+.experienceCard {
+  width: min(100%, 640px);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-neutral-100);
+  text-align: left;
+  box-shadow: inset 0 -3px 0 0 var(--color-briglet-blue);
+}
+
+.experienceEyebrow {
+  margin: 0 0 var(--spacing-2);
+  color: var(--color-navy-soft);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-body-12);
+  letter-spacing: 0.12em;
+  line-height: var(--line-height-body-12);
+  text-transform: uppercase;
+}
+
+.experienceBody {
+  margin: 0;
+  color: var(--color-navy);
+  font-size: var(--font-size-body-16);
+  letter-spacing: var(--letter-spacing-body-16);
+  line-height: 1.45;
+}
+
+.experienceBody em {
+  font-style: italic;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-2);
+}
+
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  padding: var(--spacing-4);
+  border-radius: var(--radius-lg);
+}
+
+.contactCard {
+  background-color: var(--color-onglo-orange);
+}
+
+.contactCard .cardTitle,
+.pricingCard .cardTitle,
+.socialsCard .cardTitle {
+  color: var(--color-white);
+}
+
+.contactCard .cardTitle {
+  color: var(--color-navy);
+}
+
+.cardActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+}
+
+.calendlyButton {
+  background-color: var(--color-tag-blue-beam);
+  color: var(--color-white);
+}
+
+.linkedinButton {
+  background-color: var(--color-white);
+  color: var(--color-onglo-orange);
+}
+
+.pricingCard {
+  background-color: var(--color-navy);
+}
+
+.pricingBody {
+  margin: 0;
+  color: var(--color-white);
+  font-size: var(--font-size-body-16);
+  letter-spacing: var(--letter-spacing-body-16);
+  line-height: 1.45;
+}
+
+.socialsCard {
+  background-color: var(--color-cotton-blue);
+}
+
+.socialButtons {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.socialTile {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-navy);
+}
+
+.socialTileIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.heroCta:focus-visible,
+.calendlyButton:focus-visible,
+.linkedinButton:focus-visible,
+.lockNote:focus-visible,
+.socialTile:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1024px) {
+  .launchGrid,
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-6) 0 var(--spacing-7);
+  }
+}
+
+@media (max-width: 767px) {
+  .main {
+    padding: 0 var(--spacing-2) var(--spacing-6);
+  }
+
+  .featuredHead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+  }
+
+  .experience {
+    padding: var(--spacing-7) 0 var(--spacing-5);
+  }
+
+  .infoCard {
+    min-height: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroCta,
+  .calendlyButton,
+  .linkedinButton,
+  .socialTile {
+    transition: none;
+  }
+
+  .heroCta:hover,
+  .calendlyButton:hover,
+  .linkedinButton:hover,
+  .socialTile:hover {
+    transform: none;
+  }
+}
