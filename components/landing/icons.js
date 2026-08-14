@@ -45,10 +45,7 @@ export function IconLock({ className }) {
       fill="currentColor"
       aria-hidden="true"
     >
-      <path
-        opacity="0.4"
-        d="M20 8.003H17V6.213C17 3.603 15.09 1.273 12.49 1.023A7.04 7.04 0 0 0 7 6.003v2H4v14h16v-14ZM12 17.003a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM9 8.003v-2a3 3 0 0 1 6 0v2H9Z"
-      />
+      <path d="M20 8.003H17V6.213C17 3.603 15.09 1.273 12.49 1.023A7.04 7.04 0 0 0 7 6.003v2H4v14h16v-14ZM12 17.003a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM9 8.003v-2a3 3 0 0 1 6 0v2H9Z" />
     </svg>
   );
 }

@@ -65,16 +65,34 @@
 }
 
 .heroCta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   flex-shrink: 0;
   padding: 12px 24px 10px;
   background-color: var(--color-onglo-orange);
   color: var(--color-white);
+  text-transform: uppercase;
 }
 
-.heroCta:hover,
+.heroCta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-tag-blue-beam);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s ease;
+}
+
+.heroCta:hover::before,
+.heroCta:focus-visible::before {
+  transform: scaleX(1);
+}
+
 .calendlyButton:hover,
-.linkedinButton:hover,
-.socialTile:hover {
+.linkedinButton:hover {
   filter: brightness(0.97);
 }
 
@@ -82,6 +100,12 @@
   width: 9px;
   height: 9px;
   color: var(--color-ivory);
+  transition: transform 0.35s ease;
+}
+
+.heroCta:hover .arrow,
+.heroCta:focus-visible .arrow {
+  transform: translate(3px, -3px);
 }
 
 .featured {
@@ -94,7 +118,9 @@
 .featuredHead {
   display: flex;
   align-items: center;
-  gap: 64px;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
 }
 
 .sectionTitle,
@@ -118,7 +144,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--color-pure-black);
+  color: rgb(0 0 0 / 40%);
   font-size: 24px;
   font-weight: var(--font-weight-sans-regular);
   letter-spacing: -0.96px;
@@ -127,7 +153,7 @@
 }
 
 .lockNote:hover {
-  color: var(--color-onglo-orange);
+  color: var(--color-pure-black);
 }
 
 .lockIcon {
@@ -383,6 +409,13 @@
   border-radius: var(--radius-sm);
   background-color: var(--color-white);
   color: var(--color-briglet-blue);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.socialTile:hover,
+.socialTile:focus-visible {
+  background-color: var(--color-navy);
+  color: var(--color-white);
 }
 
 .socialTileIcon {
@@ -486,10 +519,19 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .heroCta:hover,
+  .heroCta::before,
+  .arrow,
+  .socialTile {
+    transition: none;
+  }
+
+  .heroCta:hover .arrow,
+  .heroCta:focus-visible .arrow {
+    transform: none;
+  }
+
   .calendlyButton:hover,
-  .linkedinButton:hover,
-  .socialTile:hover {
+  .linkedinButton:hover {
     filter: none;
   }
 }

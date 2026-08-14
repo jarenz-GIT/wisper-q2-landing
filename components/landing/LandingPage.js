@@ -43,7 +43,7 @@ export default function LandingPage() {
               {site.cards.contact.calendly}
             </BookLink>
             <a
-              href={site.links.linkedin}
+              href={site.links.linkedinDm}
               className={styles.linkedinButton}
               target="_blank"
               rel="noreferrer"
