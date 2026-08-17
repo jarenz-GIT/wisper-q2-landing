@@ -24,17 +24,27 @@ const dmMono = DM_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://wisper-q3-landing.vercel.app"),
   title: site.title,
   description: site.description,
   openGraph: {
-    title: site.title,
+    title: site.previewTitle,
     description: site.description,
     type: "website",
+    images: [
+      {
+        url: "/images/og-preview.jpg",
+        width: 1200,
+        height: 630,
+        alt: site.previewTitle,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: site.title,
+    title: site.previewTitle,
     description: site.description,
+    images: ["/images/og-preview.jpg"],
   },
 };
 

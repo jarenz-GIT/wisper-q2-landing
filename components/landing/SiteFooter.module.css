@@ -14,10 +14,10 @@
   margin: 0;
   color: var(--color-pure-black);
   font-family: var(--font-family-mono);
-  font-size: 16px;
+  font-size: 12px;
   font-weight: var(--font-weight-mono-light);
   letter-spacing: 0;
-  line-height: 17.6px;
+  line-height: 13.2px;
   text-transform: uppercase;
   text-decoration: none;
 }
