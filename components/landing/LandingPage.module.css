@@ -226,6 +226,7 @@
 
 .launchImage {
   object-fit: cover;
+  border-radius: 12px;
 }
 
 .placeholderCard {
@@ -247,10 +248,19 @@
   position: fixed;
   inset: 0;
   z-index: 80;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 24px;
   background-color: rgb(0 0 0 / 18%);
+}
+
+.overlayStack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: min(1104px, 100%);
 }
 
 .overlayDialog {
@@ -259,7 +269,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: min(1104px, 100%);
+  width: 100%;
   min-height: min(672px, calc(100vh - 48px));
   max-height: calc(100vh - 48px);
   overflow: auto;
@@ -272,6 +282,7 @@
   position: absolute;
   top: 36px;
   right: 48px;
+  z-index: 2;
   margin: 0;
   padding: 0;
   border: 0;
@@ -285,6 +296,10 @@
   text-transform: uppercase;
   cursor: pointer;
   opacity: 0.4;
+}
+
+.overlayCloseMobile {
+  display: none;
 }
 
 .overlayClose:hover,
@@ -383,8 +398,13 @@
   font-size: 12px;
   line-height: 16px;
   text-align: left;
+  text-transform: uppercase;
   white-space: normal;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+.overlayRolesMobile {
+  display: none;
 }
 
 .overlayDescription {
@@ -573,21 +593,117 @@
 
   .cardGrid {
     padding-top: 48px;
+    gap: 12px;
   }
 
-  .cardActions,
-  .socialButtons {
+  .infoCard {
+    min-height: 200px;
+    height: auto;
+    padding: 28px 30px;
+  }
+
+  .cardTitle {
+    font-size: 30px;
+    letter-spacing: -1.2px;
+    line-height: 33px;
+  }
+
+  .cardActions {
     grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .calendlyButton,
+  .linkedinButton {
+    min-height: 36px;
+    height: 36px;
+    padding: 10px 24px 12px;
+    font-size: 12px;
+    font-style: normal;
+    letter-spacing: -0.36px;
+    line-height: 12px;
+  }
+
+  .pricingBody {
+    font-size: 12px;
+    letter-spacing: -0.72px;
+    line-height: 13.2px;
+  }
+
+  .socialButtons {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .socialTile {
+    min-height: 84px;
+    height: 84px;
+    padding: 10px 24px 12px;
+  }
+
+  .overlay {
+    padding: 16px;
+  }
+
+  .overlayStack {
+    width: 100%;
+    gap: 12px;
   }
 
   .overlayDialog {
-    padding: 24px 16px;
+    padding: 16px;
     min-height: 0;
+    max-height: calc(100vh - 88px);
   }
 
   .overlayClose {
-    top: 24px;
-    right: 16px;
+    display: none;
+  }
+
+  .overlayCloseMobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 12px;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: var(--font-family-mono);
+    font-size: 12px;
+    font-weight: var(--font-weight-mono-regular);
+    letter-spacing: 0;
+    line-height: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .overlayCloseMobile:focus-visible {
+    outline: 2px solid var(--color-onglo-orange);
+    outline-offset: 2px;
+  }
+
+  .overlayTitle,
+  .overlayDescription {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .overlayDirector {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .overlayRolesDesktop {
+    display: none;
+  }
+
+  .overlayRolesMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 }
 
