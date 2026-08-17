@@ -61,10 +61,10 @@ function VideoOverlay({ item, onClose }) {
           <div className={styles.overlayMeta}>
             <div className={styles.overlayMetaRow}>
               <h3 id={titleId} className={styles.overlayTitle}>
-                {item.title}
+                {item.overlayTitle}
               </h3>
-              {item.director ? (
-                <p className={styles.overlayDirector}>{item.director}</p>
+              {item.credits ? (
+                <p className={styles.overlayDirector}>{item.credits}</p>
               ) : null}
             </div>
             {item.description ? (
@@ -112,23 +112,7 @@ export default function FeaturedLaunches() {
       <ul className={styles.launchScroller}>
         {site.featured.items.map((item) => (
           <li key={item.slug} className={styles.launchCard}>
-            {item.dmOnly ? (
-              <a
-                href={site.links.linkedinDm}
-                className={styles.launchButton}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Image
-                  src={item.image}
-                  alt=""
-                  fill
-                  sizes="432px"
-                  className={styles.launchImage}
-                />
-                <span className={styles.srOnly}>{item.title}</span>
-              </a>
-            ) : item.placeholder ? (
+            {item.placeholder ? (
               <div className={styles.placeholderCard}>
                 <IconLock className={styles.lockIcon} />
                 <span>{item.title}</span>
