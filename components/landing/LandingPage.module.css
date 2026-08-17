@@ -200,8 +200,9 @@
   overflow: hidden;
   width: 432px;
   height: 240px;
-  border-radius: var(--radius-sm);
-  background-color: var(--color-neutral-300);
+  border: 2px solid #ededed;
+  border-radius: 14px;
+  background-color: #ededed;
   scroll-snap-align: start;
 }
 
@@ -309,7 +310,40 @@
   width: 100%;
   overflow: hidden;
   aspect-ratio: 1960 / 1080;
-  background-color: var(--color-gooper-green);
+  background-color: #ededed;
+}
+
+.overlayLoader {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ededed;
+  pointer-events: none;
+}
+
+.overlayLoaderBar {
+  width: min(240px, 42%);
+  height: 4px;
+  border-radius: 999px;
+  background-color: #ff914d;
+  animation: overlayLoaderBar 1.2s ease-in-out infinite;
+}
+
+@keyframes overlayLoaderBar {
+  0% {
+    transform: translateX(-160%) scaleX(0.4);
+  }
+
+  50% {
+    transform: translateX(0) scaleX(1);
+  }
+
+  100% {
+    transform: translateX(160%) scaleX(0.4);
+  }
 }
 
 .overlayFrame iframe {
@@ -323,15 +357,7 @@
 .overlayMeta {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  width: 100%;
-}
-
-.overlayMetaRow {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
+  gap: 8px;
   width: 100%;
 }
 
@@ -339,19 +365,32 @@
 .overlayDirector,
 .overlayDescription {
   margin: 0;
-  color: var(--color-pure-black);
+  width: 100%;
   font-family: var(--font-family-mono);
-  font-size: 16px;
   font-weight: var(--font-weight-mono-regular);
   letter-spacing: 0;
-  line-height: 18px;
+}
+
+.overlayTitle {
+  color: var(--color-pure-black);
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
 }
 
 .overlayDirector {
-  text-align: right;
+  color: rgb(0 0 0 / 50%);
+  font-size: 12px;
+  line-height: 16px;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 .overlayDescription {
+  color: var(--color-pure-black);
+  font-size: 16px;
+  line-height: 18px;
   text-transform: none;
 }
 
@@ -550,23 +589,14 @@
     top: 24px;
     right: 16px;
   }
-
-  .overlayMetaRow {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .overlayDirector {
-    text-align: center;
-  }
-
-  .overlayDescription {
-    text-align: center;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .overlayLoaderBar {
+    animation: none;
+    transform: none;
+  }
+
   .heroCta::before,
   .arrow,
   .socialTile {

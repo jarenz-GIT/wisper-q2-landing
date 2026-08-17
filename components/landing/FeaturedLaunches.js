@@ -11,6 +11,11 @@ import styles from "./LandingPage.module.css";
 function VideoOverlay({ item, onClose }) {
   const closeRef = useRef(null);
   const titleId = useId();
+  const [frameLoaded, setFrameLoaded] = useState(false);
+
+  useEffect(() => {
+    setFrameLoaded(false);
+  }, [item?.embedUrl]);
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -49,6 +54,11 @@ function VideoOverlay({ item, onClose }) {
         </button>
         <div className={styles.overlayBody}>
           <div className={styles.overlayFrame}>
+            {frameLoaded ? null : (
+              <div className={styles.overlayLoader} aria-hidden="true">
+                <div className={styles.overlayLoaderBar} />
+              </div>
+            )}
             <iframe
               key={item.embedUrl}
               src={item.embedUrl}
@@ -56,17 +66,16 @@ function VideoOverlay({ item, onClose }) {
               allow="encrypted-media; fullscreen; picture-in-picture"
               allowFullScreen
               loading="lazy"
+              onLoad={() => setFrameLoaded(true)}
             />
           </div>
           <div className={styles.overlayMeta}>
-            <div className={styles.overlayMetaRow}>
-              <h3 id={titleId} className={styles.overlayTitle}>
-                {item.overlayTitle}
-              </h3>
-              {item.credits ? (
-                <p className={styles.overlayDirector}>{item.credits}</p>
-              ) : null}
-            </div>
+            <h3 id={titleId} className={styles.overlayTitle}>
+              {item.title}
+            </h3>
+            {item.credits ? (
+              <p className={styles.overlayDirector}>{item.credits}</p>
+            ) : null}
             {item.description ? (
               <p className={styles.overlayDescription}>{item.description}</p>
             ) : null}
