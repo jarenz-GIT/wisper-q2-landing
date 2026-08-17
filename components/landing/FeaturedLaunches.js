@@ -9,13 +9,22 @@ import { IconLock } from "./icons";
 import styles from "./LandingPage.module.css";
 
 function VideoOverlay({ item, onClose }) {
-  const closeRef = useRef(null);
+  const closeDesktopRef = useRef(null);
+  const closeMobileRef = useRef(null);
   const titleId = useId();
+  const [frameLoaded, setFrameLoaded] = useState(false);
+  const roles = item.roles ?? [];
+
+  useEffect(() => {
+    setFrameLoaded(false);
+  }, [item?.embedUrl]);
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    closeRef.current?.focus();
+
+    const mobile = window.matchMedia("(max-width: 767px)").matches;
+    (mobile ? closeMobileRef : closeDesktopRef).current?.focus();
 
     const onKeyDown = (event) => {
       if (event.key === "Escape") onClose();
@@ -33,45 +42,72 @@ function VideoOverlay({ item, onClose }) {
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div
-        className={styles.overlayDialog}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={titleId}
+        className={styles.overlayStack}
         onClick={(event) => event.stopPropagation()}
       >
-        <button
-          ref={closeRef}
-          type="button"
-          className={styles.overlayClose}
-          onClick={onClose}
+        <div
+          className={styles.overlayDialog}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={titleId}
         >
-          Close
-        </button>
-        <div className={styles.overlayBody}>
-          <div className={styles.overlayFrame}>
-            <iframe
-              key={item.embedUrl}
-              src={item.embedUrl}
-              title={item.title}
-              allow="encrypted-media; fullscreen; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
-          <div className={styles.overlayMeta}>
-            <div className={styles.overlayMetaRow}>
+          <button
+            ref={closeDesktopRef}
+            type="button"
+            className={styles.overlayClose}
+            onClick={onClose}
+          >
+            CLOSE
+          </button>
+          <div className={styles.overlayBody}>
+            <div className={styles.overlayFrame}>
+              {frameLoaded ? null : (
+                <div className={styles.overlayLoader} aria-hidden="true">
+                  <div className={styles.overlayLoaderBar} />
+                </div>
+              )}
+              <iframe
+                key={item.embedUrl}
+                src={item.embedUrl}
+                title={item.title}
+                allow="encrypted-media; fullscreen; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                onLoad={() => setFrameLoaded(true)}
+              />
+            </div>
+            <div className={styles.overlayMeta}>
               <h3 id={titleId} className={styles.overlayTitle}>
-                {item.overlayTitle}
+                {item.title}
               </h3>
-              {item.credits ? (
-                <p className={styles.overlayDirector}>{item.credits}</p>
+              {roles.length ? (
+                <p className={styles.overlayDirector}>
+                  <span className={styles.overlayRolesDesktop}>
+                    [{roles.join(", ")}]
+                  </span>
+                  <span className={styles.overlayRolesMobile}>
+                    {roles.map((role) => (
+                      <span key={role} className={styles.overlayRole}>
+                        [{role}]
+                      </span>
+                    ))}
+                  </span>
+                </p>
+              ) : null}
+              {item.description ? (
+                <p className={styles.overlayDescription}>{item.description}</p>
               ) : null}
             </div>
-            {item.description ? (
-              <p className={styles.overlayDescription}>{item.description}</p>
-            ) : null}
           </div>
         </div>
+        <button
+          ref={closeMobileRef}
+          type="button"
+          className={styles.overlayCloseMobile}
+          onClick={onClose}
+        >
+          CLOSE
+        </button>
       </div>
     </div>
   );
