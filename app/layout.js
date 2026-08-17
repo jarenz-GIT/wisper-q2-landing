@@ -23,17 +23,30 @@ const dmMono = DM_Mono({
   display: "swap",
 });
 
+const SITE_URL = site.url;
+const OG_IMAGE_PATH = "/images/og-preview.jpg?v=making-videos-title";
+const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE_PATH}`;
+
 export const metadata = {
-  metadataBase: new URL("https://wisper-q3-landing.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: site.title,
   description: site.description,
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: site.previewTitle,
     description: site.description,
+    url: SITE_URL,
+    siteName: "Wisper Studios",
+    locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/images/og-preview.jpg",
+        url: OG_IMAGE_URL,
+        secureUrl: OG_IMAGE_URL,
+        type: "image/jpeg",
         width: 1200,
         height: 630,
         alt: site.previewTitle,
@@ -44,7 +57,10 @@ export const metadata = {
     card: "summary_large_image",
     title: site.previewTitle,
     description: site.description,
-    images: ["/images/og-preview.jpg"],
+    images: [OG_IMAGE_URL],
+  },
+  icons: {
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
