@@ -24,7 +24,7 @@ const dmMono = DM_Mono({
 });
 
 const SITE_URL = site.url;
-const OG_IMAGE_PATH = "/images/og-preview.jpg?v=making-videos";
+const OG_IMAGE_PATH = "/images/og-preview.jpg?v=making-videos-title";
 const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE_PATH}`;
 
 export const metadata = {
