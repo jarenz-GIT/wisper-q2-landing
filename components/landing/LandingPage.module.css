@@ -381,6 +381,10 @@
 .overlayDescription {
   margin: 0;
   width: 100%;
+}
+
+.overlayTitle,
+.overlayDirector {
   font-family: var(--font-family-mono);
   font-weight: var(--font-weight-mono-regular);
   letter-spacing: 0;
@@ -409,7 +413,10 @@
 
 .overlayDescription {
   color: var(--color-pure-black);
+  font-family: var(--font-family-sans);
   font-size: 16px;
+  font-weight: var(--font-weight-sans-regular);
+  letter-spacing: -0.04em;
   line-height: 18px;
   text-transform: none;
 }
