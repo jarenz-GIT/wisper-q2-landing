@@ -127,6 +127,10 @@
   line-height: 52.8px;
 }
 
+.studioEmail.copied {
+  color: var(--color-onglo-orange);
+}
+
 .copyIconLg {
   flex-shrink: 0;
   width: 24px;
@@ -143,9 +147,13 @@
   opacity: 0.5;
 }
 
-.copied .copyIconLg,
-.copied .copyIconSm {
+.studioEmail.copied .copyIconLg {
   color: var(--color-onglo-orange);
+  opacity: 1;
+}
+
+.directChip.copied .copyIconSm {
+  color: var(--color-pure-black);
   opacity: 1;
 }
 
@@ -194,6 +202,7 @@
   line-height: 26.4px;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transition: background-color 0.2s ease;
 }
 
 .directBack {
@@ -203,12 +212,6 @@
 
 .directAlias {
   display: none;
-}
-
-.directArrow {
-  width: 12px;
-  height: 12px;
-  color: var(--color-pure-black);
 }
 
 .otherLinks {
@@ -222,19 +225,52 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  border-radius: 4px;
+  transition: filter 0.2s ease;
+}
+
+.brandLink:hover,
+.brandLink:focus-visible {
+  filter: drop-shadow(0 2px 6px rgb(0 0 0 / 18%));
+}
+
+.instagramIcon,
+.instagramHandle {
+  display: block;
+  flex-shrink: 0;
+  background-color: transparent;
+  background-image: url("/images/contact/instagram-fill.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .instagramIcon {
   width: 20px;
   height: 20px;
-  color: var(--color-pure-black);
+  background-position: left center;
+  -webkit-mask-image: url("/images/contact/instagram-icon.svg");
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url("/images/contact/instagram-icon.svg");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
 }
 
 .instagramHandle {
-  display: block;
   width: 143px;
   height: 33px;
-  color: var(--color-pure-black);
+  background-position: right center;
+  -webkit-mask-image: url("/images/contact/instagram-handle.svg");
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url("/images/contact/instagram-handle.svg");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
 }
 
 .calendlyLogo {
@@ -255,6 +291,28 @@
   width: 148px;
   height: 27px;
   margin-top: auto;
+}
+
+.copiedToast {
+  position: fixed;
+  left: 50%;
+  bottom: 48px;
+  z-index: 92;
+  width: min(460px, calc(100vw - 48px));
+  margin: 0;
+  padding: 12px 16px;
+  border: 2px solid #ededed;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: var(--color-pure-black);
+  font-family: var(--font-family-mono);
+  font-size: 16px;
+  font-weight: var(--font-weight-mono-regular);
+  letter-spacing: 0;
+  line-height: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  transform: translateX(-50%);
 }
 
 @media (min-width: 768px) {
@@ -279,13 +337,11 @@
     transform: rotateX(180deg);
   }
 
-  .directChip:hover .directArrow,
-  .directChip:focus-visible .directArrow {
-    transform: translate(3px, -3px);
-  }
-
-  .directArrow {
-    transition: transform 0.35s ease;
+  .directChip.copied:hover .directFront,
+  .directChip.copied:hover .directBack,
+  .directChip.copied:focus-visible .directFront,
+  .directChip.copied:focus-visible .directBack {
+    background-color: var(--color-onglo-orange);
   }
 }
 
@@ -324,12 +380,22 @@
   .directBack {
     display: none;
   }
+
+  .directChip.copied .directFront {
+    background-color: var(--color-onglo-orange);
+  }
+
+  .copiedToast {
+    width: min(460px, calc(100vw - 32px));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .card,
   .directInner,
-  .directArrow {
+  .brandLink,
+  .directFront,
+  .directBack {
     transition: none;
   }
 
