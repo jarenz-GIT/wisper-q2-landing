@@ -44,7 +44,7 @@ export default {
       type: "image",
       fieldset: "seo",
       description:
-        "Small icon shown in browser tabs and bookmarks. Use a square image for best results.",
+        "Icon shown in browser tabs and bookmarks. Upload a square PNG (at least 32×32, ideally 180×180 or larger). SVG and ICO also work. Publish this document after changing it.",
       options: { hotspot: true },
     },
     {

@@ -3,6 +3,10 @@ import { DM_Mono, Hanken_Grotesk } from "next/font/google";
 import SiteFooter from "@/components/landing/SiteFooter";
 import SiteHeader from "@/components/landing/SiteHeader";
 import SmoothScroll from "@/components/SmoothScroll";
+import { getMetadataIcons } from "@/lib/favicon";
+import { siteSettingsQuery } from "@/lib/queries";
+import { sanityFetch } from "@/lib/sanity-client";
+import { getImageUrl } from "@/lib/sanity-image";
 import { site } from "@/lib/site";
 
 import "./globals.css";
@@ -26,10 +30,6 @@ const dmMono = DM_Mono({
 const SITE_URL = site.url;
 const OG_IMAGE_PATH = "/images/og-preview.jpg?v=making-videos-title";
 const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE_PATH}`;
-
-import { sanityFetch } from "@/lib/sanity-client";
-import { siteSettingsQuery } from "@/lib/queries";
-import { getImageUrl } from "@/lib/sanity-image";
 
 export async function generateMetadata() {
   const settings = await sanityFetch({
@@ -75,9 +75,7 @@ export async function generateMetadata() {
       description,
       images: [ogImageUrl],
     },
-    icons: {
-      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-    },
+    icons: getMetadataIcons(settings?.favicon),
   };
 }
 
