@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 
 import { site } from "@/lib/site";
 
@@ -174,12 +173,7 @@ export default function FeaturedLaunches() {
         ))}
       </ul>
 
-      {activeItem
-        ? createPortal(
-            <VideoOverlay item={activeItem} onClose={close} />,
-            document.body,
-          )
-        : null}
+      {activeItem ? <VideoOverlay item={activeItem} onClose={close} /> : null}
     </section>
   );
 }
