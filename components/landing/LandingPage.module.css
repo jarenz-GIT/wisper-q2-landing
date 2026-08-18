@@ -113,7 +113,9 @@
 }
 
 .heroCta:hover .arrow,
-.heroCta:focus-visible .arrow {
+.heroCta:focus-visible .arrow,
+.calendlyButton:hover .arrow,
+.calendlyButton:focus-visible .arrow {
   transform: translate(3px, -3px);
 }
 
@@ -727,7 +729,9 @@
   }
 
   .heroCta:hover .arrow,
-  .heroCta:focus-visible .arrow {
+  .heroCta:focus-visible .arrow,
+  .calendlyButton:hover .arrow,
+  .calendlyButton:focus-visible .arrow {
     transform: none;
   }
 
