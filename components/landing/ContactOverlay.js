@@ -5,11 +5,12 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { site } from "@/lib/site";
 
-import { IconArrow, IconCopy, IconInstagram } from "./icons";
+import { IconCopy } from "./icons";
 import styles from "./ContactOverlay.module.css";
 
 const MOBILE_QUERY = "(max-width: 767px)";
-const MAX_TILT = 12;
+const MAX_TILT = 4.2;
+const TOAST_MS = 2400;
 
 function isMobileViewport() {
   return window.matchMedia(MOBILE_QUERY).matches;
@@ -37,35 +38,42 @@ function CopyEmailButton({
   copyValue,
   className,
   ariaLabel,
+  copied,
+  onCopied,
+  onHoverEnd,
+  dataAttrs,
   children,
 }) {
-  const [copied, setCopied] = useState(false);
-
   const onCopy = useCallback(async () => {
     const ok = await copyText(copyValue);
     if (!ok) return;
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1600);
-  }, [copyValue]);
+    onCopied();
+  }, [copyValue, onCopied]);
 
   return (
     <button
       type="button"
       className={`${className} ${copied ? styles.copied : ""}`}
       onClick={onCopy}
+      onMouseLeave={onHoverEnd}
+      onBlur={onHoverEnd}
       aria-label={copied ? `Copied ${copyValue}` : ariaLabel}
+      {...dataAttrs}
     >
       {children}
     </button>
   );
 }
 
-function DirectChip({ alias, email }) {
+function DirectChip({ alias, email, copied, onCopied, onHoverEnd }) {
   return (
     <CopyEmailButton
       copyValue={email}
       className={styles.directChip}
       ariaLabel={`Copy ${email}`}
+      copied={copied}
+      onCopied={onCopied}
+      onHoverEnd={onHoverEnd}
     >
       <span className={styles.directInner}>
         <span className={styles.directFront}>
@@ -75,7 +83,7 @@ function DirectChip({ alias, email }) {
         </span>
         <span className={styles.directBack} aria-hidden="true">
           <span>{email}</span>
-          <IconArrow className={styles.directArrow} />
+          <IconCopy className={styles.copyIconSm} />
         </span>
       </span>
     </CopyEmailButton>
@@ -87,11 +95,18 @@ export default function ContactOverlay({ onClose }) {
   const closeRef = useRef(null);
   const cardRef = useRef(null);
   const tiltEnabled = useRef(false);
+  const [copiedKey, setCopiedKey] = useState(null);
+  const [toastEmail, setToastEmail] = useState(null);
 
   const resetTilt = useCallback(() => {
     const card = cardRef.current;
     if (!card) return;
     card.style.transform = "rotateX(0deg) rotateY(0deg)";
+  }, []);
+
+  const showCopied = useCallback((email, key) => {
+    setCopiedKey(key);
+    setToastEmail(email);
   }, []);
 
   useEffect(() => {
@@ -109,6 +124,24 @@ export default function ContactOverlay({ onClose }) {
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [onClose]);
+
+  useEffect(() => {
+    if (!toastEmail) return undefined;
+    const timeout = window.setTimeout(() => setToastEmail(null), TOAST_MS);
+    return () => window.clearTimeout(timeout);
+  }, [toastEmail]);
+
+  useEffect(() => {
+    if (copiedKey !== "studio") return undefined;
+
+    const onPointerDown = (event) => {
+      if (event.target.closest("[data-studio-email]")) return;
+      setCopiedKey(null);
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [copiedKey]);
 
   useEffect(() => {
     const card = cardRef.current;
@@ -184,6 +217,9 @@ export default function ContactOverlay({ onClose }) {
               copyValue={contactCard.studioEmail}
               className={styles.studioEmail}
               ariaLabel={`Copy ${contactCard.studioEmail}`}
+              copied={copiedKey === "studio"}
+              onCopied={() => showCopied(contactCard.studioEmail, "studio")}
+              dataAttrs={{ "data-studio-email": "" }}
             >
               <span>{contactCard.studioEmail}</span>
               <IconCopy className={styles.copyIconLg} />
@@ -197,6 +233,12 @@ export default function ContactOverlay({ onClose }) {
                     key={person.id}
                     alias={person.alias}
                     email={person.email}
+                    copied={copiedKey === person.id}
+                    onCopied={() => showCopied(person.email, person.id)}
+                    onHoverEnd={() => {
+                      if (isMobileViewport()) return;
+                      setCopiedKey((key) => (key === person.id ? null : key));
+                    }}
                   />
                 ))}
               </div>
@@ -205,20 +247,13 @@ export default function ContactOverlay({ onClose }) {
             <div className={styles.otherLinks}>
               <a
                 href={links.instagram}
-                className={styles.brandLink}
+                className={`${styles.brandLink} ${styles.instagramLink}`}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Wisper Studios on Instagram"
               >
-                <IconInstagram className={styles.instagramIcon} />
-                <Image
-                  src="/images/contact/instagram-handle.svg"
-                  alt="@wisperstudios"
-                  className={styles.instagramHandle}
-                  width={143}
-                  height={33}
-                  unoptimized
-                />
+                <span className={styles.instagramIcon} aria-hidden="true" />
+                <span className={styles.instagramHandle} aria-hidden="true" />
               </a>
               <a
                 href={links.calendly}
@@ -255,6 +290,16 @@ export default function ContactOverlay({ onClose }) {
           />
         </div>
       </div>
+
+      {toastEmail ? (
+        <p
+          className={styles.copiedToast}
+          role="status"
+          onClick={(event) => event.stopPropagation()}
+        >
+          {`COPIED ${toastEmail.toUpperCase()} TO CLIPBOARD`}
+        </p>
+      ) : null}
     </div>
   );
 }
