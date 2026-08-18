@@ -61,6 +61,10 @@
 
 .bookLink {
   justify-self: end;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--color-pure-black);
   font-family: var(--font-family-mono);
   font-size: 16px;
@@ -69,6 +73,7 @@
   line-height: 16px;
   text-decoration: none;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .bookLink:hover {

@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useCallback, useRef, useState } from "react";
 
 import { site } from "@/lib/site";
 
+import ContactOverlay from "./ContactOverlay";
 import { IconInstagram, IconLinkedIn, IconX } from "./icons";
 import styles from "./SiteHeader.module.css";
 
@@ -25,6 +27,14 @@ const SOCIALS = [
 ];
 
 export default function SiteHeader() {
+  const [contactOpen, setContactOpen] = useState(false);
+  const sayHiRef = useRef(null);
+  const openContact = useCallback(() => setContactOpen(true), []);
+  const closeContact = useCallback(() => {
+    setContactOpen(false);
+    window.requestAnimationFrame(() => sayHiRef.current?.focus());
+  }, []);
+
   return (
     <header className={styles.header}>
       <div className={styles.bar}>
@@ -55,15 +65,18 @@ export default function SiteHeader() {
           ))}
         </nav>
 
-        <a
-          href={site.links.calendly}
+        <button
+          ref={sayHiRef}
+          type="button"
           className={styles.bookLink}
-          target="_blank"
-          rel="noreferrer"
+          onClick={openContact}
+          aria-haspopup="dialog"
+          aria-expanded={contactOpen}
         >
           {site.hero.navCta}
-        </a>
+        </button>
       </div>
+      {contactOpen ? <ContactOverlay onClose={closeContact} /> : null}
     </header>
   );
 }
