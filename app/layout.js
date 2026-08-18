@@ -1,5 +1,6 @@
 import { DM_Mono, Hanken_Grotesk } from "next/font/google";
 
+import LensDistortion from "@/components/LensDistortion";
 import SiteFooter from "@/components/landing/SiteFooter";
 import SiteHeader from "@/components/landing/SiteHeader";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -88,8 +89,10 @@ export default function RootLayout({ children }) {
         </a>
         <SmoothScroll />
         <SiteHeader />
-        {children}
-        <SiteFooter />
+        <LensDistortion>
+          {children}
+          <SiteFooter />
+        </LensDistortion>
       </body>
     </html>
   );
