@@ -1,0 +1,38 @@
+/*
+  Tunable lens parameters (keep in sync with LensDistortion.js):
+  --lens-distortion: fisheye bulge strength
+  --lens-aberration: RGB split at the edges
+  --lens-mode: lateral = radial outward split
+  --lens-center-point: bulge / aberration origin
+*/
+
+.root {
+  --lens-distortion: 0.04;
+  --lens-aberration: 0.01;
+  --lens-mode: lateral;
+  --lens-center-point: 50% 50%;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.content,
+.contentFiltered {
+  min-height: 100%;
+}
+
+.contentFiltered {
+  filter: url(#lensDistortion);
+  -webkit-filter: url(#lensDistortion);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contentFiltered {
+    filter: none;
+  }
+}
