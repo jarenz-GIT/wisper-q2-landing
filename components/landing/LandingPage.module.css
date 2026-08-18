@@ -172,26 +172,68 @@
   height: 24px;
 }
 
+.launchCarousel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 -48px 0 0;
+}
+
 .launchScroller {
+  position: relative;
   display: flex;
   gap: 12px;
-  margin: 0 -48px 0 0;
+  margin: 0;
   padding: 0 48px 0 0;
   list-style: none;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
-  scrollbar-color: var(--color-onglo-orange) transparent;
-  scrollbar-width: thin;
+  scroll-padding-inline: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+}
+
+.launchScroller:focus-visible {
+  outline: 2px solid var(--color-onglo-orange);
+  outline-offset: 3px;
 }
 
 .launchScroller::-webkit-scrollbar {
-  height: 8px;
+  display: none;
 }
 
-.launchScroller::-webkit-scrollbar-thumb {
-  background-color: var(--color-onglo-orange);
+.launchProgress {
+  display: block;
+  width: 100%;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.launchProgressTrack {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
   border-radius: 999px;
+  background-color: #ededed;
+}
+
+.launchProgressThumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  border-radius: 999px;
+  background-color: var(--color-onglo-orange);
+  will-change: transform, width;
 }
 
 .launchCard {
@@ -204,6 +246,7 @@
   border-radius: 14px;
   background-color: #ededed;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .launchButton {
@@ -227,6 +270,8 @@
 .launchImage {
   object-fit: cover;
   border-radius: 12px;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .placeholderCard {
@@ -585,17 +630,28 @@
     text-align: right;
   }
 
+  .launchCarousel {
+    margin-right: 0;
+    gap: 0;
+  }
+
   .launchScroller {
     flex-direction: column;
     margin-right: 0;
     padding-right: 0;
     overflow: visible;
     scroll-snap-type: none;
+    touch-action: auto;
+  }
+
+  .launchProgress {
+    display: none;
   }
 
   .launchCard {
     flex: none;
     width: 100%;
+    scroll-snap-stop: normal;
   }
 
   .cardGrid {
@@ -722,7 +778,8 @@
 
   .heroCta::before,
   .arrow,
-  .socialTile {
+  .socialTile,
+  .launchProgressThumb {
     transition: none;
   }
 
