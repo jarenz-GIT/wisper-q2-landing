@@ -7,45 +7,105 @@ import { site } from "@/lib/site";
 
 import styles from "./LandingPage.module.css";
 
-const IDLE_SPEED = 0.15;
-const HOVER_SPEED = 0.35;
+const IDLE_SPEED = 0.28;
+const HOVER_SPEED = 0.55;
+
+const BLOB_MOTIONS = [
+  {
+    xPercent: 22,
+    yPercent: 18,
+    scale: 1.18,
+    rotation: 14,
+    borderRadius: "58% 42% 62% 38%",
+    duration: 2.4,
+  },
+  {
+    xPercent: -20,
+    yPercent: 16,
+    scale: 1.22,
+    rotation: -12,
+    borderRadius: "40% 60% 38% 62%",
+    duration: 2.9,
+  },
+  {
+    xPercent: 16,
+    yPercent: -22,
+    scale: 1.16,
+    rotation: 10,
+    borderRadius: "62% 38% 48% 52%",
+    duration: 3.2,
+  },
+  {
+    xPercent: -14,
+    yPercent: -18,
+    scale: 1.2,
+    rotation: -16,
+    borderRadius: "46% 54% 60% 40%",
+    duration: 2.6,
+  },
+  {
+    xPercent: 10,
+    yPercent: 12,
+    scale: 1.28,
+    rotation: 8,
+    borderRadius: "50% 50% 42% 58%",
+    duration: 3.5,
+  },
+];
 
 export default function HeroCta() {
   const linkRef = useRef(null);
-  const glowRef = useRef(null);
+  const blobsRef = useRef(null);
 
   useEffect(() => {
     const link = linkRef.current;
-    const glow = glowRef.current;
-    if (!link || !glow) return undefined;
+    const blobsWrap = blobsRef.current;
+    if (!link || !blobsWrap) return undefined;
 
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (media.matches) return undefined;
 
-    const tween = gsap.to(glow, {
-      xPercent: -50,
-      duration: 2.5,
-      ease: "none",
+    const blobs = Array.from(blobsWrap.children);
+    const tweens = blobs.map((blob, index) => {
+      const motion = BLOB_MOTIONS[index] ?? BLOB_MOTIONS[0];
+      const tween = gsap.to(blob, {
+        xPercent: motion.xPercent,
+        yPercent: motion.yPercent,
+        scale: motion.scale,
+        rotation: motion.rotation,
+        borderRadius: motion.borderRadius,
+        duration: motion.duration,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+      tween.timeScale(IDLE_SPEED);
+      return tween;
+    });
+
+    const groupTween = gsap.to(blobsWrap, {
+      rotation: 12,
+      duration: 8,
+      ease: "sine.inOut",
+      yoyo: true,
       repeat: -1,
     });
-    tween.timeScale(IDLE_SPEED);
+    groupTween.timeScale(IDLE_SPEED);
+    tweens.push(groupTween);
 
-    const speedUp = () => {
-      gsap.to(tween, {
-        timeScale: HOVER_SPEED,
-        duration: 0.4,
-        ease: "power1.out",
-        overwrite: true,
+    const setSpeed = (speed) => {
+      tweens.forEach((tween) => {
+        gsap.to(tween, {
+          timeScale: speed,
+          duration: 0.4,
+          ease: "power1.out",
+          overwrite: true,
+        });
       });
     };
-    const slowDown = () => {
-      gsap.to(tween, {
-        timeScale: IDLE_SPEED,
-        duration: 0.45,
-        ease: "power1.out",
-        overwrite: true,
-      });
-    };
+
+    const speedUp = () => setSpeed(HOVER_SPEED);
+    const slowDown = () => setSpeed(IDLE_SPEED);
 
     link.addEventListener("mouseenter", speedUp);
     link.addEventListener("mouseleave", slowDown);
@@ -54,17 +114,20 @@ export default function HeroCta() {
 
     const onMotionChange = () => {
       if (media.matches) {
-        tween.pause();
-        gsap.set(glow, { xPercent: 0 });
+        tweens.forEach((tween) => tween.pause());
+        gsap.set(blobs, { xPercent: 0, yPercent: 0, scale: 1, rotation: 0 });
+        gsap.set(blobsWrap, { rotation: 0 });
       } else {
-        tween.timeScale(IDLE_SPEED);
-        tween.play();
+        tweens.forEach((tween) => {
+          tween.timeScale(IDLE_SPEED);
+          tween.play();
+        });
       }
     };
     media.addEventListener("change", onMotionChange);
 
     return () => {
-      tween.kill();
+      tweens.forEach((tween) => tween.kill());
       link.removeEventListener("mouseenter", speedUp);
       link.removeEventListener("mouseleave", slowDown);
       link.removeEventListener("focus", speedUp);
@@ -82,7 +145,14 @@ export default function HeroCta() {
       rel="noreferrer"
     >
       <span className={styles.heroCtaFill} aria-hidden="true">
-        <span ref={glowRef} className={styles.heroCtaGlow} />
+        <span ref={blobsRef} className={styles.heroCtaBlobs}>
+          <span className={`${styles.heroCtaBlob} ${styles.heroCtaBlobNavy}`} />
+          <span className={`${styles.heroCtaBlob} ${styles.heroCtaBlobTeal}`} />
+          <span className={`${styles.heroCtaBlob} ${styles.heroCtaBlobOrange}`} />
+          <span className={`${styles.heroCtaBlob} ${styles.heroCtaBlobBlue}`} />
+          <span className={`${styles.heroCtaBlob} ${styles.heroCtaBlobWhite}`} />
+        </span>
+        <span className={styles.heroCtaNoise} />
       </span>
       <span className={styles.heroCtaLabel}>{site.hero.cta}</span>
     </a>
