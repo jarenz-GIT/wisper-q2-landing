@@ -2,10 +2,10 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  width: min(1104px, calc(100% - 48px));
-  max-width: 1104px;
+  width: min(1600px, 100%);
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 54px 0 24px;
+  padding: 54px 24px 24px;
 }
 
 .legal,
@@ -44,8 +44,8 @@
     grid-template-columns: 1fr;
     justify-items: center;
     gap: 8px;
-    width: calc(100% - 32px);
-    padding: 32px 0 40px;
+    width: min(1600px, 100%);
+    padding: 32px 24px 40px;
     text-align: center;
   }
 
