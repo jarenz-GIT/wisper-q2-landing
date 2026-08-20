@@ -71,7 +71,7 @@
   letter-spacing: -0.42px;
   line-height: 14px;
   text-transform: uppercase;
-  animation: heroCtaFade 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: heroCtaFade 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s 1 both;
 }
 
 .heroCtaFill {
@@ -157,14 +157,17 @@
   opacity: 0;
   clip-path: circle(0% at 50% 50%);
   transition:
-    clip-path 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    clip-path 0s linear 0.28s;
 }
 
 .heroCta:hover .heroCtaHover,
 .heroCta:focus-visible .heroCtaHover {
   opacity: 1;
   clip-path: circle(150% at 50% 50%);
+  transition:
+    clip-path 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .heroCtaLabel {
@@ -207,7 +210,7 @@
   aspect-ratio: 1111 / 618;
   border-radius: var(--radius-sm);
   background-color: #ededed;
-  animation: heroReelRise 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+  animation: heroReelRise 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.8s 1 both;
 }
 
 .heroReelVideo {
