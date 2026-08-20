@@ -59,7 +59,8 @@
 .close:focus-visible,
 .studioEmail:focus-visible,
 .directChip:focus-visible,
-.brandLink:focus-visible {
+.calendlyCta:focus-visible,
+.footerSocial:focus-visible {
   outline: 2px solid var(--color-onglo-orange);
   outline-offset: 3px;
 }
@@ -96,8 +97,7 @@
 }
 
 .studioEmail,
-.directChip,
-.brandLink {
+.directChip {
   color: inherit;
   text-decoration: none;
 }
@@ -192,6 +192,7 @@
   width: 100%;
   height: 100%;
   padding: 8px;
+  border: 1px solid var(--color-neutral-300);
   border-radius: 2px;
   background-color: #f4f4f4;
   color: var(--color-pure-black);
@@ -214,83 +215,78 @@
   display: none;
 }
 
-.otherLinks {
+.calendlyCta {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.brandLink {
-  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  border-radius: 4px;
-  transition: filter 0.2s ease;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid var(--color-neutral-300);
+  border-radius: 2px;
+  background-color: var(--color-tag-blue-beam);
+  color: var(--color-white);
+  font-family: var(--font-family-sans);
+  font-size: 24px;
+  font-weight: var(--font-weight-sans-regular);
+  letter-spacing: -0.96px;
+  line-height: 26.4px;
+  text-decoration: none;
+  transition: filter 0.2s ease, background-color 0.2s ease;
 }
 
-.brandLink:hover,
-.brandLink:focus-visible {
+.calendlyCta:hover,
+.calendlyCta:focus-visible {
   filter: drop-shadow(0 2px 6px rgb(0 0 0 / 18%));
 }
 
-.instagramIcon,
-.instagramHandle {
-  display: block;
-  flex-shrink: 0;
-  background-color: transparent;
-  background-image: url("/images/contact/instagram-fill.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-.instagramIcon {
-  width: 20px;
-  height: 20px;
-  background-position: left center;
-  -webkit-mask-image: url("/images/contact/instagram-icon.svg");
-  -webkit-mask-position: center;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  mask-image: url("/images/contact/instagram-icon.svg");
-  mask-position: center;
-  mask-repeat: no-repeat;
-  mask-size: contain;
-}
-
-.instagramHandle {
-  width: 143px;
-  height: 33px;
-  background-position: right center;
-  -webkit-mask-image: url("/images/contact/instagram-handle.svg");
-  -webkit-mask-position: center;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  mask-image: url("/images/contact/instagram-handle.svg");
-  mask-position: center;
-  mask-repeat: no-repeat;
-  mask-size: contain;
-}
-
-.calendlyLogo {
-  display: block;
-  width: 22px;
-  height: 24px;
-  object-fit: contain;
-}
-
-.calendlyHandle {
-  display: block;
-  width: 124px;
-  height: 33px;
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
 }
 
 .wordmark {
   display: block;
   width: 148px;
   height: 27px;
-  margin-top: auto;
+}
+
+.footerSocials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footerSocial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-pure-black);
+}
+
+.footerSocial:hover,
+.footerSocial:focus-visible {
+  color: var(--color-onglo-orange);
+}
+
+.footerSocialX {
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+.footerSocialLinkedIn {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.footerSocialInstagram {
+  display: block;
+  width: 20px;
+  height: 20px;
 }
 
 .copiedToast {
@@ -371,7 +367,8 @@
   }
 
   .directFront,
-  .directBack {
+  .directBack,
+  .calendlyCta {
     font-size: 18px;
     letter-spacing: -0.72px;
     line-height: 22px;
@@ -393,7 +390,7 @@
 @media (prefers-reduced-motion: reduce) {
   .card,
   .directInner,
-  .brandLink,
+  .calendlyCta,
   .directFront,
   .directBack {
     transition: none;
