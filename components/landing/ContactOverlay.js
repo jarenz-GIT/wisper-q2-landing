@@ -5,7 +5,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { site } from "@/lib/site";
 
-import { IconCopy } from "./icons";
+import { IconCopy, IconInstagram, IconLinkedIn, IconX } from "./icons";
 import styles from "./ContactOverlay.module.css";
 
 const MOBILE_QUERY = "(max-width: 767px)";
@@ -244,50 +244,54 @@ export default function ContactOverlay({ onClose }) {
               </div>
             </div>
 
-            <div className={styles.otherLinks}>
+            <a
+              href={links.calendly}
+              className={styles.calendlyCta}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {contactCard.calendlyCta}
+            </a>
+          </div>
+
+          <div className={styles.footer}>
+            <Image
+              src="/images/brand/wisper-wordmark-home.svg"
+              alt=""
+              width={148}
+              height={27}
+              className={styles.wordmark}
+            />
+            <nav className={styles.footerSocials} aria-label="Social">
+              <a
+                href={links.x}
+                className={styles.footerSocial}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Wisper Studios on X"
+              >
+                <IconX className={styles.footerSocialX} />
+              </a>
+              <a
+                href={links.linkedin}
+                className={styles.footerSocial}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Wisper Studios on LinkedIn"
+              >
+                <IconLinkedIn className={styles.footerSocialLinkedIn} />
+              </a>
               <a
                 href={links.instagram}
-                className={`${styles.brandLink} ${styles.instagramLink}`}
+                className={styles.footerSocial}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Wisper Studios on Instagram"
               >
-                <span className={styles.instagramIcon} aria-hidden="true" />
-                <span className={styles.instagramHandle} aria-hidden="true" />
+                <IconInstagram className={styles.footerSocialInstagram} />
               </a>
-              <a
-                href={links.calendly}
-                className={styles.brandLink}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Book on Calendly"
-              >
-                <Image
-                  src="/images/contact/calendly-logo.png"
-                  alt=""
-                  width={22}
-                  height={24}
-                  className={styles.calendlyLogo}
-                />
-                <Image
-                  src="/images/contact/calendly-handle.svg"
-                  alt="Calendly"
-                  className={styles.calendlyHandle}
-                  width={124}
-                  height={33}
-                  unoptimized
-                />
-              </a>
-            </div>
+            </nav>
           </div>
-
-          <Image
-            src="/images/brand/wisper-wordmark-home.svg"
-            alt=""
-            width={148}
-            height={27}
-            className={styles.wordmark}
-          />
         </div>
       </div>
 
