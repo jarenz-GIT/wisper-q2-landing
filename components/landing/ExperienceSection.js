@@ -28,7 +28,6 @@ export default function ExperienceSection() {
   const [reduceMotion, setReduceMotion] = useState(false);
 
   const active = categories.find((item) => item.id === activeId) ?? categories[0];
-  const CardIcon = ICONS[active.id];
 
   const select = useCallback((id) => {
     setActiveId(id);
@@ -94,11 +93,30 @@ export default function ExperienceSection() {
         style={{ "--accent": active.color }}
         aria-live="polite"
       >
-        <div className={styles.eyebrowRow}>
-          {CardIcon ? <CardIcon className={styles.cardIcon} /> : null}
-          <p className={styles.eyebrow}>{active.eyebrow}</p>
+        <div className={styles.cardMain}>
+          {categories.map((category) => {
+            const VariantIcon = ICONS[category.id];
+            const isActive = category.id === activeId;
+
+            return (
+              <div
+                key={category.id}
+                className={`${styles.cardVariant} ${
+                  isActive ? styles.cardVariantActive : ""
+                }`}
+                aria-hidden={!isActive}
+              >
+                <div className={styles.eyebrowRow}>
+                  {VariantIcon ? (
+                    <VariantIcon className={styles.cardIcon} />
+                  ) : null}
+                  <p className={styles.eyebrow}>{category.eyebrow}</p>
+                </div>
+                <p className={styles.body}>{category.body}</p>
+              </div>
+            );
+          })}
         </div>
-        <p className={styles.body}>{active.body}</p>
         <div className={styles.progress} aria-hidden="true">
           <span
             key={`${activeId}-${reduceMotion ? "static" : "play"}`}

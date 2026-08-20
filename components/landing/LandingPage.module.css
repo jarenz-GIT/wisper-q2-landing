@@ -71,6 +71,7 @@
   letter-spacing: -0.42px;
   line-height: 14px;
   text-transform: uppercase;
+  animation: heroCtaFade 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .heroCtaFill {
@@ -148,9 +149,49 @@
   background-size: 140px 140px;
 }
 
+.heroCtaHover {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: #1f293a;
+  opacity: 0;
+  clip-path: circle(0% at 50% 50%);
+  transition:
+    clip-path 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.heroCta:hover .heroCtaHover,
+.heroCta:focus-visible .heroCtaHover {
+  opacity: 1;
+  clip-path: circle(150% at 50% 50%);
+}
+
 .heroCtaLabel {
   position: relative;
   z-index: 1;
+}
+
+@keyframes heroCtaFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroReelRise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .heroCta::selection,
@@ -166,6 +207,7 @@
   aspect-ratio: 1111 / 618;
   border-radius: var(--radius-sm);
   background-color: #ededed;
+  animation: heroReelRise 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
 }
 
 .heroReelVideo {
@@ -653,7 +695,12 @@
   }
 
   .heroCta {
-    align-self: flex-start;
+    align-self: stretch;
+    width: 100%;
+    min-width: 0;
+    height: 48px;
+    min-height: 48px;
+    padding: 8px 24px;
   }
 
   .headline {
@@ -679,15 +726,15 @@
     margin-left: -16px;
     margin-right: -16px;
     border-radius: 0;
+    aspect-ratio: 4 / 3;
   }
 
   .heroReelMeta {
-    inset: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
     justify-content: center;
-    padding: 16px;
+    padding: 0;
   }
 
   .heroReelLabel {
@@ -847,10 +894,12 @@
     transform: none;
   }
 
-  .heroCtaBlobs,
-  .heroCtaBlob,
-  .arrow,
-  .socialTile {
+  .heroCta,
+  .heroReel {
+    animation: none;
+  }
+
+  .heroCtaHover {
     transition: none;
   }
 
@@ -858,6 +907,11 @@
   .heroCtaBlob {
     will-change: auto;
     transform: none;
+  }
+
+  .arrow,
+  .socialTile {
+    transition: none;
   }
 
   .calendlyButton:hover .arrow,
