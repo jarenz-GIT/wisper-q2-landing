@@ -28,6 +28,7 @@ export default function ExperienceSection() {
   const [reduceMotion, setReduceMotion] = useState(false);
 
   const active = categories.find((item) => item.id === activeId) ?? categories[0];
+  const CardIcon = ICONS[active.id];
 
   const select = useCallback((id) => {
     setActiveId(id);
@@ -93,7 +94,10 @@ export default function ExperienceSection() {
         style={{ "--accent": active.color }}
         aria-live="polite"
       >
-        <p className={styles.eyebrow}>{active.eyebrow}</p>
+        <div className={styles.eyebrowRow}>
+          {CardIcon ? <CardIcon className={styles.cardIcon} /> : null}
+          <p className={styles.eyebrow}>{active.eyebrow}</p>
+        </div>
         <p className={styles.body}>{active.body}</p>
         <div className={styles.progress} aria-hidden="true">
           <span

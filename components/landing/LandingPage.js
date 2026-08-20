@@ -2,6 +2,8 @@ import { site } from "@/lib/site";
 
 import ExperienceSection from "./ExperienceSection";
 import FeaturedLaunches from "./FeaturedLaunches";
+import HeroCta from "./HeroCta";
+import HeroReel from "./HeroReel";
 import { IconArrow, IconInstagram, IconLinkedIn, IconX } from "./icons";
 import styles from "./LandingPage.module.css";
 
@@ -24,16 +26,15 @@ export default function LandingPage() {
             <br />
             {site.hero.headlineBottom}
           </h1>
-          <p className={styles.subhead}>{site.hero.subhead}</p>
         </div>
-        <BookLink href={site.links.calendly} className={styles.heroCta}>
-          {site.hero.cta}
-        </BookLink>
+        <HeroCta />
       </section>
 
-      <FeaturedLaunches />
+      <HeroReel />
 
       <ExperienceSection />
+
+      <FeaturedLaunches />
 
       <section className={styles.cardGrid} aria-label="Contact, pricing, and socials">
         <article id="contact" className={`${styles.infoCard} ${styles.contactCard}`}>

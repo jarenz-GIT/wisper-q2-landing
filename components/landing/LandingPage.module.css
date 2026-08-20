@@ -21,30 +21,20 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 48px;
-  padding: 197px 0 166px;
+  padding: 80px 0 64px;
 }
 
 .heroCopy {
-  max-width: 566px;
+  max-width: 738px;
 }
 
 .headline {
   margin: 0;
   color: var(--color-pure-black);
-  font-size: 48px;
+  font-size: 64px;
   font-weight: var(--font-weight-sans-regular);
-  letter-spacing: -1.92px;
-  line-height: 52.8px;
-}
-
-.subhead {
-  max-width: 566px;
-  margin: 12px 0 0;
-  color: var(--color-pure-black);
-  font-size: 16px;
-  font-weight: var(--font-weight-sans-regular);
-  letter-spacing: -0.64px;
-  line-height: 17.6px;
+  letter-spacing: -3.2px;
+  line-height: 70.4px;
 }
 
 .heroCta,
@@ -69,40 +59,113 @@
   isolation: isolate;
   overflow: hidden;
   flex-shrink: 0;
-  padding: 12px 24px 10px;
+  align-self: stretch;
+  min-width: 146px;
+  min-height: 136px;
+  padding: 8px 24px;
   background-color: var(--color-onglo-orange);
+  background-image: linear-gradient(180deg, #ff914d 0%, #99572e 100%);
   color: var(--color-white);
   -webkit-text-fill-color: var(--color-white);
-  text-transform: uppercase;
+  font-size: 14px;
+  font-style: normal;
+  letter-spacing: -0.42px;
+  line-height: 14px;
 }
 
-.heroCta:hover,
-.heroCta:focus-visible {
-  background-color: var(--color-tag-blue-beam);
-  color: var(--color-white);
-  -webkit-text-fill-color: var(--color-white);
-}
-
-.heroCta::before {
-  content: "";
+.heroCtaFill {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-color: var(--color-tag-blue-beam);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.4s ease;
+  overflow: hidden;
+  pointer-events: none;
 }
 
-.heroCta:hover::before,
-.heroCta:focus-visible::before {
-  transform: scaleX(1);
+.heroCtaGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200%;
+  will-change: transform;
+  background-image: linear-gradient(
+    90deg,
+    #ff914d 0%,
+    #f6cb43 18%,
+    #c96e49 36%,
+    #99572e 50%,
+    #f5b5ae 68%,
+    #f6cb43 84%,
+    #ff914d 100%
+  );
+}
+
+.heroCtaLabel {
+  position: relative;
+  z-index: 1;
 }
 
 .heroCta::selection,
 .heroCta *::selection {
   background-color: transparent;
   color: var(--color-white);
+}
+
+.heroReel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1111 / 618;
+  border-radius: var(--radius-sm);
+  background-color: #ededed;
+}
+
+.heroReelVideo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroReel .overlayLoader {
+  z-index: 3;
+}
+
+.heroReelShade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to top, rgb(0 0 0 / 25%) 0%, transparent 45%);
+}
+
+.heroReelMeta {
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  bottom: 24px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  pointer-events: none;
+}
+
+.heroReelLabel,
+.heroReelLabelDesktop {
+  margin: 0;
+  color: var(--color-white);
+  font-family: var(--font-family-mono);
+  font-size: 16px;
+  font-weight: var(--font-weight-mono-regular);
+  letter-spacing: 0;
+  line-height: 16px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .arrow {
@@ -112,8 +175,6 @@
   transition: transform 0.35s ease;
 }
 
-.heroCta:hover .arrow,
-.heroCta:focus-visible .arrow,
 .calendlyButton:hover .arrow,
 .calendlyButton:focus-visible .arrow {
   transform: translate(3px, -3px);
@@ -122,7 +183,8 @@
 .featured {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 22px;
+  padding-top: 92px;
   scroll-margin-top: 88px;
 }
 
@@ -140,10 +202,10 @@
   gap: 6px;
   margin-left: auto;
   color: rgb(0 0 0 / 40%);
-  font-size: 24px;
+  font-size: 16px;
   font-weight: var(--font-weight-sans-regular);
-  letter-spacing: -0.96px;
-  line-height: 26.4px;
+  letter-spacing: -0.64px;
+  line-height: 17.6px;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -170,42 +232,28 @@
 }
 
 .lockIcon {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
 }
 
 .launchScroller {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
-  margin: 0 -48px 0 0;
-  padding: 0 48px 0 0;
+  margin: 0;
+  padding: 0;
   list-style: none;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scrollbar-color: var(--color-onglo-orange) transparent;
-  scrollbar-width: thin;
-}
-
-.launchScroller::-webkit-scrollbar {
-  height: 8px;
-}
-
-.launchScroller::-webkit-scrollbar-thumb {
-  background-color: var(--color-onglo-orange);
-  border-radius: 999px;
 }
 
 .launchCard {
   position: relative;
-  flex: 0 0 432px;
   overflow: hidden;
-  width: 432px;
-  height: 240px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 548 / 305;
   border: 2px solid #ededed;
-  border-radius: 14px;
+  border-radius: var(--radius-sm);
   background-color: #ededed;
-  scroll-snap-align: start;
 }
 
 .launchButton {
@@ -427,7 +475,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
-  padding-top: 187px;
+  padding-top: 151px;
 }
 
 .infoCard {
@@ -556,11 +604,14 @@
     padding: 80px 0 56px;
   }
 
-  .launchCard {
-    flex-basis: min(432px, 78vw);
-    width: min(432px, 78vw);
-    height: auto;
-    aspect-ratio: 432 / 240;
+  .heroCta {
+    align-self: flex-start;
+  }
+
+  .headline {
+    font-size: 48px;
+    letter-spacing: -1.92px;
+    line-height: 52.8px;
   }
 }
 
@@ -573,6 +624,37 @@
     font-size: 32px;
     letter-spacing: -1.28px;
     line-height: 36px;
+  }
+
+  .heroReel {
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    margin-right: -16px;
+    border-radius: 0;
+  }
+
+  .heroReelMeta {
+    inset: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .heroReelLabel {
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .heroReelLabelDesktop {
+    display: none;
+  }
+
+  .featured {
+    padding-top: 48px;
   }
 
   .sectionTitle,
@@ -588,15 +670,10 @@
   }
 
   .launchScroller {
-    flex-direction: column;
-    margin-right: 0;
-    padding-right: 0;
-    overflow: visible;
-    scroll-snap-type: none;
+    grid-template-columns: 1fr;
   }
 
   .launchCard {
-    flex: none;
     width: 100%;
   }
 
@@ -722,14 +799,16 @@
     transform: none;
   }
 
-  .heroCta::before,
+  .heroCtaGlow,
   .arrow,
   .socialTile {
     transition: none;
   }
 
-  .heroCta:hover .arrow,
-  .heroCta:focus-visible .arrow,
+  .heroCtaGlow {
+    will-change: auto;
+  }
+
   .calendlyButton:hover .arrow,
   .calendlyButton:focus-visible .arrow {
     transform: none;
