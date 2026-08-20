@@ -1,7 +1,7 @@
 .main {
-  width: min(1200px, 100%);
+  width: min(1600px, 100%);
   margin: 0 auto;
-  padding: 0 48px 0;
+  padding: 0 24px;
 }
 
 .srOnly {
@@ -712,7 +712,7 @@
 
 @media (max-width: 767px) {
   .main {
-    padding: 0 16px;
+    padding: 0 24px;
   }
 
   .headline {
@@ -722,9 +722,9 @@
   }
 
   .heroReel {
-    width: calc(100% + 32px);
-    margin-left: -16px;
-    margin-right: -16px;
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    margin-right: -24px;
     border-radius: 0;
     aspect-ratio: 4 / 3;
   }

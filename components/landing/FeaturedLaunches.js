@@ -163,7 +163,7 @@ export default function FeaturedLaunches() {
                   src={item.image}
                   alt=""
                   fill
-                  sizes="(max-width: 767px) 100vw, 548px"
+                  sizes="(max-width: 767px) 100vw, (max-width: 1600px) 50vw, 776px"
                   className={styles.launchImage}
                 />
                 <span className={styles.srOnly}>Play {item.title}</span>
