@@ -98,6 +98,22 @@
   background-color: #ededed;
 }
 
+.cardMain {
+  display: grid;
+}
+
+.cardVariant {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  visibility: hidden;
+}
+
+.cardVariantActive {
+  visibility: visible;
+}
+
 .eyebrowRow {
   display: flex;
   align-items: center;

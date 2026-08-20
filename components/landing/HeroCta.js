@@ -7,8 +7,7 @@ import { site } from "@/lib/site";
 
 import styles from "./LandingPage.module.css";
 
-const IDLE_SPEED = 0.28;
-const HOVER_SPEED = 0.55;
+const IDLE_SPEED = 0.336;
 
 const BLOB_MOTIONS = [
   {
@@ -54,13 +53,11 @@ const BLOB_MOTIONS = [
 ];
 
 export default function HeroCta() {
-  const linkRef = useRef(null);
   const blobsRef = useRef(null);
 
   useEffect(() => {
-    const link = linkRef.current;
     const blobsWrap = blobsRef.current;
-    if (!link || !blobsWrap) return undefined;
+    if (!blobsWrap) return undefined;
 
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (media.matches) return undefined;
@@ -93,25 +90,6 @@ export default function HeroCta() {
     groupTween.timeScale(IDLE_SPEED);
     tweens.push(groupTween);
 
-    const setSpeed = (speed) => {
-      tweens.forEach((tween) => {
-        gsap.to(tween, {
-          timeScale: speed,
-          duration: 0.4,
-          ease: "power1.out",
-          overwrite: true,
-        });
-      });
-    };
-
-    const speedUp = () => setSpeed(HOVER_SPEED);
-    const slowDown = () => setSpeed(IDLE_SPEED);
-
-    link.addEventListener("mouseenter", speedUp);
-    link.addEventListener("mouseleave", slowDown);
-    link.addEventListener("focus", speedUp);
-    link.addEventListener("blur", slowDown);
-
     const onMotionChange = () => {
       if (media.matches) {
         tweens.forEach((tween) => tween.pause());
@@ -128,17 +106,12 @@ export default function HeroCta() {
 
     return () => {
       tweens.forEach((tween) => tween.kill());
-      link.removeEventListener("mouseenter", speedUp);
-      link.removeEventListener("mouseleave", slowDown);
-      link.removeEventListener("focus", speedUp);
-      link.removeEventListener("blur", slowDown);
       media.removeEventListener("change", onMotionChange);
     };
   }, []);
 
   return (
     <a
-      ref={linkRef}
       href={site.links.calendly}
       className={styles.heroCta}
       target="_blank"
@@ -153,6 +126,7 @@ export default function HeroCta() {
           <span className={`${styles.heroCtaBlob} ${styles.heroCtaBlobWhite}`} />
         </span>
         <span className={styles.heroCtaNoise} />
+        <span className={styles.heroCtaHover} />
       </span>
       <span className={styles.heroCtaLabel}>{site.hero.cta}</span>
     </a>
