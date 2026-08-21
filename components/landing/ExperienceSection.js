@@ -35,8 +35,10 @@ function countWrappedLines(element) {
 function StatementContent({ categories, activeId, onSelect, interactive }) {
   return (
     <>
-      <span className={styles.fullLine}>{site.experience.lineOne}</span>
-      <span>{site.experience.prefix}</span>
+      <span className={styles.introLine}>{site.experience.intro}</span>
+      <span className={styles.phrase}>
+        {site.experience.production} {site.experience.prefix}
+      </span>
       {categories.map((category) => {
         const Icon = ICONS[category.id];
         const isActive = category.id === activeId;

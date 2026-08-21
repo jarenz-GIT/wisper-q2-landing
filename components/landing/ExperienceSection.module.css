@@ -60,8 +60,12 @@
   width: 100%;
 }
 
-.fullLine {
+.introLine {
   flex: 1 0 100%;
+}
+
+.phrase {
+  white-space: nowrap;
 }
 
 .tokenCluster {
@@ -222,6 +226,14 @@
   .card {
     flex: none;
     width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .statement {
+    font-size: 24px;
+    letter-spacing: -0.96px;
+    line-height: 28px;
   }
 }
 
